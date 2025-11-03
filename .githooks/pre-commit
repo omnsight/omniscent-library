@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Git pre-commit hook that runs make commands before allowing commits
+# This ensures generated code is up-to-date before committing
+
+echo "🚀 Running pre-commit checks..."
+
+# Run make commands to ensure generated code is current
+echo "📦 Generating protobuf code..."
+if ! make gen_geovision; then
+    echo "❌ Failed to generate geovision protobuf code"
+    exit 1
+fi
+
+echo "📦 Generating OpenAPI documentation..."
+if ! make gen_geovision_openapi; then
+    echo "❌ Failed to generate OpenAPI documentation"
+    exit 1
+fi
+
+# Check if any generated files were modified
+if git diff --name-only --cached | grep -E "^(gen/)" > /dev/null; then
+    echo "⚠️  Generated files were modified during pre-commit"
+    echo "   Please review and stage these changes:"
+    git diff --name-only --cached | grep -E "^(gen/)"
+
+    # Ask user if they want to continue
+    read -p "Continue with commit? (y/N) " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "❌ Commit aborted by user"
+        exit 1
+    fi
+fi
+
+echo "✅ Pre-commit checks passed!"
+exit 0

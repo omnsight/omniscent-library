@@ -23,6 +23,11 @@ make gen_geovision_openapi
 go mod tidy
 ```
 
+```bash
+# Set up pre-commit hooks
+git config core.hooksPath .githooks 
+```
+
 ## Documentation Guidelines
 
 Each readme file should cover ONLY these aspects:
