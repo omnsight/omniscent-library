@@ -1,6 +1,6 @@
-# Omnidl
+# OmniLib
 
-Omnidl hosts the data models and service definitions for all Omnisciens services, defining the contracts between services and the data models for backend services and ArangoDB.
+OmniLib hosts the data models and service definitions for all Omnisciens services, defining the contracts between services and the data models for backend services and ArangoDB.
 
 ## Directory Structure
 
