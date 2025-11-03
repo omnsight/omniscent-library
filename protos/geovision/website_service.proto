@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package geovision;
+
+import "model/osint.proto";
+import "google/api/annotations.proto";
+
+option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/geovision;geovision";
+
+// WebsiteService provides operations for managing websites
+service WebsiteService {
+  rpc GetWebsite(GetWebsiteRequest) returns (GetWebsiteResponse) {
+    option (google.api.http) = {
+      get: "/v1/websites/{id}"
+    };
+  }
+
+  rpc CreateWebsite(CreateWebsiteRequest) returns (CreateWebsiteResponse) {
+    option (google.api.http) = {
+      post: "/v1/websites"
+      body: "website"
+    };
+  }
+
+  rpc UpdateWebsite(UpdateWebsiteRequest) returns (UpdateWebsiteResponse) {
+    option (google.api.http) = {
+      put: "/v1/websites/{id}"
+      body: "website"
+    };
+  }
+
+  rpc DeleteWebsite(DeleteWebsiteRequest) returns (DeleteWebsiteResponse) {
+    option (google.api.http) = {
+      delete: "/v1/websites/{id}"
+    };
+  }
+}
+
+// Website messages
+message GetWebsiteRequest {
+  string id = 1;
+}
+
+message GetWebsiteResponse {
+  model.Website website = 1;
+}
+
+message CreateWebsiteRequest {
+  model.Website website = 1;
+}
+
+message CreateWebsiteResponse {
+  model.Website website = 1;
+}
+
+message UpdateWebsiteRequest {
+  string id = 1;
+  model.Website website = 2;
+}
+
+message UpdateWebsiteResponse {
+  model.Website website = 1;
+}
+
+message DeleteWebsiteRequest {
+  string id = 1;
+}
+
+message DeleteWebsiteResponse {
+  bool success = 1;
+}

@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package model;
+
+import "model/common.proto";
+
+option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/model;model";
+
+message LocationData {
+  float latitude = 1;
+  float longitude = 2;
+  string country_code = 3;
+  string administrative_area = 4;
+  string sub_administrative_area = 5;
+  string locality = 7;
+  string sub_locality = 8;
+  string address = 9;
+  int32 postal_code = 10;
+}
+
+message Relation {
+  model.RelationBase base = 1;
+  int32 confidence = 2;
+  map<string, string> attributes = 3;
+}
+
+message Event {
+  model.EntityBase base = 1;
+  LocationData loacation = 2;
+  string title = 3;
+  string description = 4;
+  int64 timestamp = 5;
+  repeated string tags = 6;
+}
+
+message Source {
+  model.EntityBase base = 1;
+  string name = 2;
+  string url = 3;
+  int32 reliability = 4;
+  bool monitoring = 5;
+  repeated string tags = 6;
+}
+
+message Person {
+  model.EntityBase base = 1;
+  string name = 2;
+  string role = 3;
+  string nationality = 4;
+  repeated string aliases = 5;
+}
+
+message Organization {
+  model.EntityBase base = 1;
+  string name = 2;
+  string type = 5;
+  int64 founded = 6;
+}
+
+message Website {
+  model.EntityBase base = 1;
+  string url = 4;
+  string domain = 5;
+  string title = 6;
+  string description = 7;
+  string category = 8;
+  int64 last_visited = 9;
+  int64 created_at = 10;
+  int64 updated_at = 11;
+  bool visible = 12;
+}

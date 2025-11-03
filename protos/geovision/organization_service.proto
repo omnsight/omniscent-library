@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package geovision;
+
+import "model/osint.proto";
+import "google/api/annotations.proto";
+
+option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/geovision;geovision";
+
+// OrganizationService provides operations for managing organizations
+service OrganizationService {
+  rpc GetOrganization(GetOrganizationRequest) returns (GetOrganizationResponse) {
+    option (google.api.http) = {
+      get: "/v1/organizations/{id}"
+    };
+  }
+
+  rpc CreateOrganization(CreateOrganizationRequest) returns (CreateOrganizationResponse) {
+    option (google.api.http) = {
+      post: "/v1/organizations"
+      body: "organization"
+    };
+  }
+
+  rpc UpdateOrganization(UpdateOrganizationRequest) returns (UpdateOrganizationResponse) {
+    option (google.api.http) = {
+      put: "/v1/organizations/{id}"
+      body: "organization"
+    };
+  }
+
+  rpc DeleteOrganization(DeleteOrganizationRequest) returns (DeleteOrganizationResponse) {
+    option (google.api.http) = {
+      delete: "/v1/organizations/{id}"
+    };
+  }
+}
+
+// Organization messages
+message GetOrganizationRequest {
+  string id = 1;
+}
+
+message GetOrganizationResponse {
+  model.Organization organization = 1;
+}
+
+message CreateOrganizationRequest {
+  model.Organization organization = 1;
+}
+
+message CreateOrganizationResponse {
+  model.Organization organization = 1;
+}
+
+message UpdateOrganizationRequest {
+  string id = 1;
+  model.Organization organization = 2;
+}
+
+message UpdateOrganizationResponse {
+  model.Organization organization = 1;
+}
+
+message DeleteOrganizationRequest {
+  string id = 1;
+}
+
+message DeleteOrganizationResponse {
+  bool success = 1;
+}
