@@ -9,6 +9,7 @@ PROTOC_INCLUDES := -I$(PROTO_DIR)
 gen_geovision: DESTDIR := ./gen/go
 gen_geovision: PROTO_OUT := \
     --go_out=$(DESTDIR) --go_opt=paths=source_relative \
+	--go-json_out=$(DESTDIR) --go-json_opt=paths=source_relative \
     --go-grpc_out=$(DESTDIR) --go-grpc_opt=paths=source_relative \
     --grpc-gateway_out=$(DESTDIR) --grpc-gateway_opt=paths=source_relative
 gen_geovision: PROTO_FILES := $(wildcard $(PROTO_DIR)/geovision/*.proto)
