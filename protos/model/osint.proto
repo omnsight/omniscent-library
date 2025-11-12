@@ -49,11 +49,6 @@ message Event {
   repeated string tags = 30;
 }
 
-message RelatedEvent {
-  Relation relation = 1;
-  Event event = 2;
-}
-
 message Source {
   // Common data
   string id = 1 [json_name = "_id"];
@@ -70,11 +65,6 @@ message Source {
   int64 updated_at = 21;
   // Additional
   repeated string tags = 30;
-}
-
-message RelatedSource {
-  Relation relation = 1;
-  Source source = 2;
 }
 
 message Person {
@@ -95,11 +85,6 @@ message Person {
   repeated string aliases = 31;
 }
 
-message RelatedPerson {
-  Relation relation = 1;
-  Person person = 2;
-}
-
 message Organization {
   // Common data
   string id = 1 [json_name = "_id"];
@@ -115,11 +100,6 @@ message Organization {
   int64 last_visited = 22;
   // Additional
   repeated string tags = 30;
-}
-
-message RelatedOrganization {
-  Relation relation = 1;
-  Organization organization = 2;
 }
 
 message Website {
@@ -139,9 +119,4 @@ message Website {
   int64 last_visited = 22;
   // Additional
   repeated string tags = 30;
-}
-
-message RelatedWebsite {
-  Relation relation = 1;
-  Website website = 2;
 }

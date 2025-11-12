@@ -21,9 +21,9 @@ service EventService {
     };
   }
 
-  rpc GetRelatedEvents(GetRelatedEventsRequest) returns (GetRelatedEventsResponse) {
+  rpc GetEventRelatedEntities(GetEventRelatedEntitiesRequest) returns (GetEventRelatedEntitiesResponse) {
     option (google.api.http) = {
-      get: "/v1/events/{key}/related-events"
+      get: "/v1/events/{key}/related-entities"
     };
   }
 
@@ -64,18 +64,24 @@ message GetEventRequest {
 
 message GetEventResponse {
   model.Event event = 1;
-  repeated model.RelatedSource sources = 2;
-  repeated model.RelatedPerson persons = 3;
-  repeated model.RelatedOrganization organizations = 4;
-  repeated model.RelatedWebsite websites = 5;
 }
 
-message GetRelatedEventsRequest {
+message GetEventRelatedEntitiesRequest {
   string key = 1;
 }
 
-message GetRelatedEventsResponse {
-  repeated model.RelatedEvent events = 1;
+message GetEventRelatedEntitiesResponse {
+  repeated Related entities = 1;
+
+  message Related {
+    Relation relation = 1;
+    oneof entity {
+      Source source = 2;
+      Person person = 3;
+      Organization organization = 4;
+      Website website = 5;
+    }
+  }
 }
 
 message CreateEventRequest {
