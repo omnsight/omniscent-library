@@ -76,10 +76,10 @@ message GetEventRelatedEntitiesResponse {
   message Related {
     Relation relation = 1;
     oneof entity {
-      Source source = 2;
-      Person person = 3;
-      Organization organization = 4;
-      Website website = 5;
+      model.Source source = 2;
+      model.Person person = 3;
+      model.Organization organization = 4;
+      model.Website website = 5;
     }
   }
 }
