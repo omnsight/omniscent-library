@@ -74,7 +74,7 @@ message GetEventRelatedEntitiesResponse {
   repeated Related entities = 1;
 
   message Related {
-    Relation relation = 1;
+    model.Relation relation = 1;
     oneof entity {
       model.Source source = 2;
       model.Person person = 3;
