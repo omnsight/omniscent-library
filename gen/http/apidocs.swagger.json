@@ -847,6 +847,17 @@
         }
       }
     },
+    "GetEventsResponseRelatedEvent": {
+      "type": "object",
+      "properties": {
+        "relation": {
+          "$ref": "#/definitions/modelRelation"
+        },
+        "event": {
+          "$ref": "#/definitions/modelEvent"
+        }
+      }
+    },
     "RelationValue": {
       "type": "object",
       "properties": {
@@ -963,7 +974,7 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/modelEvent"
+            "$ref": "#/definitions/GetEventsResponseRelatedEvent"
           }
         }
       }
