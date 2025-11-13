@@ -1,27 +1,44 @@
+# This workflow automatically creates a new Git tag on pushes to the default branch.
+# It determines the version bump (patch, minor, major) based on the labels
+# of the pull request that was merged.
+
 name: Automatic Tagging
 
 on:
   push:
     branches:
-      - mainline
+      - main # Change this to your default branch (e.g., master)
 
 jobs:
   tag:
     name: Create New Tag
     runs-on: ubuntu-latest
 
+    # Grant permissions for the workflow to read content and write new tags.
     permissions:
       contents: write
 
     steps:
+      # Step 1: Check out the repository's code.
+      # 'fetch-depth: 0' is crucial. It fetches all history and tags
+      # so the action can find the previous tag.
       - name: Checkout code
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+      # Step 2: Run the automatic tagging action.
+      # This action handles all the logic:
+      # 1. Finds the PR associated with the merge commit.
+      # 2. Reads the PR's labels (e.g., 'major', 'minor', 'patch').
+      # 3. Finds the latest Git tag (e.g., 'v1.1.0').
+      # 4. Calculates the new tag based on the label (e.g., 'v1.2.0' for 'minor').
+      # 5. Creates and pushes the new tag.
       - name: Bump version and push tag
-        uses: anothrNick/github-tag-action@v1.67.0
+        uses: anothrNick/github-tag-action@v1.67.0 # Using a specific stable version
         env:
+          # The GITHUB_TOKEN is automatically provided by GitHub Actions.
+          # It's required to push the new tag back to your repository.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
           # --- Configuration ---
@@ -33,6 +50,18 @@ jobs:
           # This adds a 'v' prefix to the tag (e.g., v1.0.1).
           # Set to 'false' if you just want '1.0.1'.
           WITH_V: true
+
+          # --- New Pre-release Configuration ---
+
+          # Label to trigger a pre-release bump
+          # e.g., v0.1.0-alpha.1 -> v0.1.0-alpha.2
+          PRERELEASE_BUMP_LABEL: 'prerelease'
+
+          # The prefix to use for pre-release versions
+          # (e.g., 'alpha', 'beta', 'rc').
+          PRERELEASE_PREFIX: 'alpha'
+
+          # --- End New Configuration ---
 
           # You can customize the labels this action looks for.
           # Default is 'major', 'minor', 'patch'.
