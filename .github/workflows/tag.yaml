@@ -7,7 +7,7 @@ name: Automatic Tagging
 on:
   push:
     branches:
-      - main # Change this to your default branch (e.g., master)
+      - mainline # Change this to your default branch (e.g., master)
 
 jobs:
   tag:
