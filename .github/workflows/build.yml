@@ -5,6 +5,7 @@ on:
     branches:
       - '**'
       - '!main'
+      - '!pre-release'
 
 jobs:
   generate-proto:
