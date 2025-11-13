@@ -939,14 +939,14 @@
     "geovisionGetEventsResponse": {
       "type": "object",
       "properties": {
-        "relation": {
+        "relations": {
           "type": "array",
           "items": {
             "type": "object",
             "$ref": "#/definitions/modelRelation"
           }
         },
-        "event": {
+        "events": {
           "type": "array",
           "items": {
             "type": "object",
