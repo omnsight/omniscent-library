@@ -270,8 +270,9 @@ type Source struct {
 	// Main Data
 	Name        string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
 	Url         string `protobuf:"bytes,11,opt,name=url,proto3" json:"url,omitempty"`
-	Reliability int32  `protobuf:"varint,12,opt,name=reliability,proto3" json:"reliability,omitempty"`
-	Monitoring  int32  `protobuf:"varint,13,opt,name=monitoring,proto3" json:"monitoring,omitempty"`
+	RootUrl     string `protobuf:"bytes,12,opt,name=root_url,json=rootUrl,proto3" json:"root_url,omitempty"`
+	Reliability int32  `protobuf:"varint,13,opt,name=reliability,proto3" json:"reliability,omitempty"`
+	Monitoring  int32  `protobuf:"varint,14,opt,name=monitoring,proto3" json:"monitoring,omitempty"`
 	// Time data
 	CreatedAt int64 `protobuf:"varint,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt int64 `protobuf:"varint,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
@@ -349,6 +350,13 @@ func (x *Source) GetName() string {
 func (x *Source) GetUrl() string {
 	if x != nil {
 		return x.Url
+	}
+	return ""
+}
+
+func (x *Source) GetRootUrl() string {
+	if x != nil {
+		return x.RootUrl
 	}
 	return ""
 }
@@ -950,7 +958,7 @@ const file_model_osint_proto_rawDesc = "" +
 	"happenedAt\x12\x1d\n" +
 	"\n" +
 	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x12\x12\n" +
-	"\x04tags\x18\x1e \x03(\tR\x04tags\"\x93\x02\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xae\x02\n" +
 	"\x06Source\x12\x0f\n" +
 	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
 	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
@@ -958,10 +966,11 @@ const file_model_osint_proto_rawDesc = "" +
 	"\avisible\x18\x04 \x01(\bR\avisible\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x10\n" +
-	"\x03url\x18\v \x01(\tR\x03url\x12 \n" +
-	"\vreliability\x18\f \x01(\x05R\vreliability\x12\x1e\n" +
+	"\x03url\x18\v \x01(\tR\x03url\x12\x19\n" +
+	"\broot_url\x18\f \x01(\tR\arootUrl\x12 \n" +
+	"\vreliability\x18\r \x01(\x05R\vreliability\x12\x1e\n" +
 	"\n" +
-	"monitoring\x18\r \x01(\x05R\n" +
+	"monitoring\x18\x0e \x01(\x05R\n" +
 	"monitoring\x12\x1d\n" +
 	"\n" +
 	"created_at\x18\x14 \x01(\x03R\tcreatedAt\x12\x1d\n" +
