@@ -1,9 +1,10 @@
-name: Test Makefile
+name: Test Before Release
 
 on:
   pull_request:
     branches:
-      - 'main'
+      - main
+      - pre-release
 
 jobs:
   test-make:
