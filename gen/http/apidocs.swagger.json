@@ -827,37 +827,6 @@
     }
   },
   "definitions": {
-    "GetEventRelatedEntitiesResponseRelated": {
-      "type": "object",
-      "properties": {
-        "relation": {
-          "$ref": "#/definitions/modelRelation"
-        },
-        "source": {
-          "$ref": "#/definitions/modelSource"
-        },
-        "person": {
-          "$ref": "#/definitions/modelPerson"
-        },
-        "organization": {
-          "$ref": "#/definitions/modelOrganization"
-        },
-        "website": {
-          "$ref": "#/definitions/modelWebsite"
-        }
-      }
-    },
-    "GetEventsResponseRelatedEvent": {
-      "type": "object",
-      "properties": {
-        "relation": {
-          "$ref": "#/definitions/modelRelation"
-        },
-        "event": {
-          "$ref": "#/definitions/modelEvent"
-        }
-      }
-    },
     "RelationValue": {
       "type": "object",
       "properties": {
@@ -954,7 +923,7 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/GetEventRelatedEntitiesResponseRelated"
+            "$ref": "#/definitions/modelRelatedEntity"
           }
         }
       }
@@ -974,7 +943,7 @@
           "type": "array",
           "items": {
             "type": "object",
-            "$ref": "#/definitions/GetEventsResponseRelatedEvent"
+            "$ref": "#/definitions/modelRelatedEvent"
           }
         }
       }
@@ -1233,6 +1202,37 @@
         }
       }
     },
+    "modelRelatedEntity": {
+      "type": "object",
+      "properties": {
+        "relation": {
+          "$ref": "#/definitions/modelRelation"
+        },
+        "source": {
+          "$ref": "#/definitions/modelSource"
+        },
+        "person": {
+          "$ref": "#/definitions/modelPerson"
+        },
+        "organization": {
+          "$ref": "#/definitions/modelOrganization"
+        },
+        "website": {
+          "$ref": "#/definitions/modelWebsite"
+        }
+      }
+    },
+    "modelRelatedEvent": {
+      "type": "object",
+      "properties": {
+        "relation": {
+          "$ref": "#/definitions/modelRelation"
+        },
+        "event": {
+          "$ref": "#/definitions/modelEvent"
+        }
+      }
+    },
     "modelRelation": {
       "type": "object",
       "properties": {
@@ -1298,6 +1298,9 @@
           "title": "Main Data"
         },
         "url": {
+          "type": "string"
+        },
+        "rootUrl": {
           "type": "string"
         },
         "reliability": {

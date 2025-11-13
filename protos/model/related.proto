@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package model;
+
+import "model/common.proto";
+import "model/osint.proto";
+
+option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/model;model";
+
+message RelatedEvent {
+  Relation relation = 1;
+  Event event = 2;
+}
+
+message RelatedEntity {
+  Relation relation = 1;
+  oneof entity {
+    Source source = 2;
+    Person person = 3;
+    Organization organization = 4;
+    Website website = 5;
+  }
+}
