@@ -3,6 +3,7 @@ syntax = "proto3";
 package geovision;
 
 import "model/osint.proto";
+import "model/related.proto";
 import "google/api/annotations.proto";
 
 option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/geovision;geovision";
@@ -49,18 +50,13 @@ service EventService {
 }
 
 // Event messages
-message RelatedEvent {
-  model.Relation relation = 1;
-  model.Event event = 2;
-}
-
 message GetEventsRequest {
   int64 start_time = 1;
   int64 end_time = 2;
 }
 
 message GetEventsResponse {
-  repeated RelatedEvent events = 1;
+  repeated model.RelatedEvent events = 1;
 }
 
 message GetEventRequest {
@@ -71,22 +67,12 @@ message GetEventResponse {
   model.Event event = 1;
 }
 
-message RelatedEntity {
-  model.Relation relation = 1;
-  oneof entity {
-    model.Source source = 2;
-    model.Person person = 3;
-    model.Organization organization = 4;
-    model.Website website = 5;
-  }
-}
-
 message GetEventRelatedEntitiesRequest {
   string key = 1;
 }
 
 message GetEventRelatedEntitiesResponse {
-  repeated RelatedEntity entities = 1;
+  repeated model.RelatedEntity entities = 1;
 }
 
 message CreateEventRequest {
