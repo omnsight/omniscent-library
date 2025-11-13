@@ -831,22 +831,27 @@
       "type": "object",
       "properties": {
         "stringValue": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: json:\"string_value,omitempty\""
         },
         "intValue": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "@gotags: json:\"int_value,omitempty\""
         },
         "doubleValue": {
           "type": "number",
-          "format": "double"
+          "format": "double",
+          "title": "@gotags: json:\"double_value,omitempty\""
         },
         "floatValue": {
           "type": "number",
-          "format": "float"
+          "format": "float",
+          "title": "@gotags: json:\"float_value,omitempty\""
         },
         "boolValue": {
-          "type": "boolean"
+          "type": "boolean",
+          "title": "@gotags: json:\"bool_value,omitempty\""
         }
       }
     },
@@ -1066,11 +1071,12 @@
         "happenedAt": {
           "type": "string",
           "format": "int64",
-          "title": "Time data"
+          "title": "Time data\n@gotags: json:\"happened_at,omitempty\""
         },
         "updatedAt": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "@gotags: json:\"updated_at,omitempty\""
         },
         "tags": {
           "type": "array",
@@ -1144,15 +1150,17 @@
         "foundedAt": {
           "type": "string",
           "format": "int64",
-          "title": "Time data"
+          "title": "Time data\n@gotags: json:\"founded_at,omitempty\""
         },
         "discoveredAt": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "@gotags: json:\"discovered_at,omitempty\""
         },
         "lastVisited": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "@gotags: json:\"last_visited,omitempty\""
         },
         "tags": {
           "type": "array",
@@ -1194,11 +1202,12 @@
         "birthDate": {
           "type": "string",
           "format": "int64",
-          "title": "Time data"
+          "title": "Time data\n@gotags: json:\"birth_date,omitempty\""
         },
         "updatedAt": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "@gotags: json:\"updated_at,omitempty\""
         },
         "tags": {
           "type": "array",
@@ -1240,7 +1249,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "Common data\n@gotags: json:\"_id,omitempty\""
+          "title": "Common data\n@gotags: valid:\"_id\""
         },
         "key": {
           "type": "string",
@@ -1264,7 +1273,8 @@
         },
         "confidence": {
           "type": "integer",
-          "format": "int32"
+          "format": "int32",
+          "title": "@gotags: json:\"confidence,omitempty\""
         },
         "attributes": {
           "type": "object",
@@ -1275,11 +1285,12 @@
         "createdAt": {
           "type": "string",
           "format": "int64",
-          "title": "Time data"
+          "title": "Time data\n@gotags: json:\"created_at,omitempty\""
         },
         "updatedAt": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "@gotags: json:\"updated_at,omitempty\""
         }
       }
     },
@@ -1309,7 +1320,8 @@
           "type": "string"
         },
         "rootUrl": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: json:\"root_url,omitempty\""
         },
         "reliability": {
           "type": "integer",
@@ -1322,11 +1334,12 @@
         "createdAt": {
           "type": "string",
           "format": "int64",
-          "title": "Time data"
+          "title": "Time data\n@gotags: json:\"created_at,omitempty\""
         },
         "updatedAt": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "@gotags: json:\"updated_at,omitempty\""
         },
         "tags": {
           "type": "array",
@@ -1371,15 +1384,17 @@
         "foundedAt": {
           "type": "string",
           "format": "int64",
-          "title": "Time data"
+          "title": "Time data\n@gotags: json:\"founded_at,omitempty\""
         },
         "discoveredAt": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "@gotags: json:\"discovered_at,omitempty\""
         },
         "lastVisited": {
           "type": "string",
-          "format": "int64"
+          "format": "int64",
+          "title": "@gotags: json:\"last_visited,omitempty\""
         },
         "tags": {
           "type": "array",
