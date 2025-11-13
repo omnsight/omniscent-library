@@ -1240,7 +1240,7 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "Common data\n@gotags: valid:\"_id\""
+          "title": "Common data\n@gotags: json:\"_id,omitempty\""
         },
         "key": {
           "type": "string",

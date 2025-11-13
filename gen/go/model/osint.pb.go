@@ -24,8 +24,8 @@ const (
 type Relation struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
-	// @gotags: valid:"_id"
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" valid:"_id"`
+	// @gotags: json:"_id,omitempty"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
 	// @gotags: json:"_key,omitempty"
 	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
 	// @gotags: json:"_from,omitempty"
