@@ -1038,15 +1038,17 @@
     "modelEvent": {
       "type": "object",
       "properties": {
-        "_id": {
+        "id": {
           "type": "string",
-          "title": "Common data"
+          "title": "Common data\n@gotags: json:\"_id,omitempty\""
         },
-        "_key": {
-          "type": "string"
+        "key": {
+          "type": "string",
+          "title": "@gotags: json:\"_key,omitempty\""
         },
-        "_rev": {
-          "type": "string"
+        "rev": {
+          "type": "string",
+          "title": "@gotags: json:\"_rev,omitempty\""
         },
         "visible": {
           "type": "boolean"
@@ -1117,15 +1119,17 @@
     "modelOrganization": {
       "type": "object",
       "properties": {
-        "_id": {
+        "id": {
           "type": "string",
-          "title": "Common data"
+          "title": "Common data\n@gotags: json:\"_id,omitempty\""
         },
-        "_key": {
-          "type": "string"
+        "key": {
+          "type": "string",
+          "title": "@gotags: json:\"_key,omitempty\""
         },
-        "_rev": {
-          "type": "string"
+        "rev": {
+          "type": "string",
+          "title": "@gotags: json:\"_rev,omitempty\""
         },
         "visible": {
           "type": "boolean"
@@ -1162,15 +1166,17 @@
     "modelPerson": {
       "type": "object",
       "properties": {
-        "_id": {
+        "id": {
           "type": "string",
-          "title": "Common data"
+          "title": "Common data\n@gotags: json:\"_id,omitempty\""
         },
-        "_key": {
-          "type": "string"
+        "key": {
+          "type": "string",
+          "title": "@gotags: json:\"_key,omitempty\""
         },
-        "_rev": {
-          "type": "string"
+        "rev": {
+          "type": "string",
+          "title": "@gotags: json:\"_rev,omitempty\""
         },
         "visible": {
           "type": "boolean"
@@ -1232,21 +1238,25 @@
     "modelRelation": {
       "type": "object",
       "properties": {
-        "_id": {
+        "id": {
           "type": "string",
-          "title": "Common data"
+          "title": "Common data\n@gotags: json:\"_id,omitempty\""
         },
-        "_key": {
-          "type": "string"
+        "key": {
+          "type": "string",
+          "title": "@gotags: json:\"_key,omitempty\""
         },
-        "_from": {
-          "type": "string"
+        "from": {
+          "type": "string",
+          "title": "@gotags: json:\"_from,omitempty\""
         },
-        "_to": {
-          "type": "string"
+        "to": {
+          "type": "string",
+          "title": "@gotags: json:\"_to,omitempty\""
         },
-        "_rev": {
-          "type": "string"
+        "rev": {
+          "type": "string",
+          "title": "@gotags: json:\"_rev,omitempty\""
         },
         "name": {
           "type": "string",
@@ -1276,15 +1286,17 @@
     "modelSource": {
       "type": "object",
       "properties": {
-        "_id": {
+        "id": {
           "type": "string",
-          "title": "Common data"
+          "title": "Common data\n@gotags: json:\"_id,omitempty\""
         },
-        "_key": {
-          "type": "string"
+        "key": {
+          "type": "string",
+          "title": "@gotags: json:\"_key,omitempty\""
         },
-        "_rev": {
-          "type": "string"
+        "rev": {
+          "type": "string",
+          "title": "@gotags: json:\"_rev,omitempty\""
         },
         "visible": {
           "type": "boolean"
@@ -1328,15 +1340,17 @@
     "modelWebsite": {
       "type": "object",
       "properties": {
-        "_id": {
+        "id": {
           "type": "string",
-          "title": "Common data"
+          "title": "Common data\n@gotags: json:\"_id,omitempty\""
         },
-        "_key": {
-          "type": "string"
+        "key": {
+          "type": "string",
+          "title": "@gotags: json:\"_key,omitempty\""
         },
-        "_rev": {
-          "type": "string"
+        "rev": {
+          "type": "string",
+          "title": "@gotags: json:\"_rev,omitempty\""
         },
         "visible": {
           "type": "boolean"

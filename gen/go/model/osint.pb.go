@@ -24,11 +24,16 @@ const (
 type Relation struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
-	Id   string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
-	Key  string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
-	From string `protobuf:"bytes,3,opt,name=from,json=_from,proto3" json:"from,omitempty"`
-	To   string `protobuf:"bytes,4,opt,name=to,json=_to,proto3" json:"to,omitempty"`
-	Rev  string `protobuf:"bytes,5,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	// @gotags: json:"_id,omitempty"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	// @gotags: json:"_key,omitempty"
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	// @gotags: json:"_from,omitempty"
+	From string `protobuf:"bytes,3,opt,name=from,proto3" json:"_from,omitempty"`
+	// @gotags: json:"_to,omitempty"
+	To string `protobuf:"bytes,4,opt,name=to,proto3" json:"_to,omitempty"`
+	// @gotags: json:"_rev,omitempty"
+	Rev string `protobuf:"bytes,5,opt,name=rev,proto3" json:"_rev,omitempty"`
 	// Main Data
 	Name       string                     `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
 	Confidence int32                      `protobuf:"varint,11,opt,name=confidence,proto3" json:"confidence,omitempty"`
@@ -143,9 +148,12 @@ func (x *Relation) GetUpdatedAt() int64 {
 type Event struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
-	Id      string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
-	Key     string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
-	Rev     string `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	// @gotags: json:"_id,omitempty"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	// @gotags: json:"_key,omitempty"
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	// @gotags: json:"_rev,omitempty"
+	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
 	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
 	// Main Data
 	Location    *LocationData `protobuf:"bytes,10,opt,name=location,proto3" json:"location,omitempty"`
@@ -263,9 +271,12 @@ func (x *Event) GetTags() []string {
 type Source struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
-	Id      string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
-	Key     string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
-	Rev     string `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	// @gotags: json:"_id,omitempty"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	// @gotags: json:"_key,omitempty"
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	// @gotags: json:"_rev,omitempty"
+	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
 	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
 	// Main Data
 	Name        string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
@@ -399,9 +410,12 @@ func (x *Source) GetTags() []string {
 type Person struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
-	Id      string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
-	Key     string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
-	Rev     string `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	// @gotags: json:"_id,omitempty"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	// @gotags: json:"_key,omitempty"
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	// @gotags: json:"_rev,omitempty"
+	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
 	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
 	// Main Data
 	Name        string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
@@ -527,9 +541,12 @@ func (x *Person) GetAliases() []string {
 type Organization struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
-	Id      string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
-	Key     string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
-	Rev     string `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	// @gotags: json:"_id,omitempty"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	// @gotags: json:"_key,omitempty"
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	// @gotags: json:"_rev,omitempty"
+	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
 	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
 	// Main Data
 	Name string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
@@ -647,9 +664,12 @@ func (x *Organization) GetTags() []string {
 type Website struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
-	Id      string `protobuf:"bytes,1,opt,name=id,json=_id,proto3" json:"id,omitempty"`
-	Key     string `protobuf:"bytes,2,opt,name=key,json=_key,proto3" json:"key,omitempty"`
-	Rev     string `protobuf:"bytes,3,opt,name=rev,json=_rev,proto3" json:"rev,omitempty"`
+	// @gotags: json:"_id,omitempty"
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	// @gotags: json:"_key,omitempty"
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	// @gotags: json:"_rev,omitempty"
+	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
 	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
 	// Main Data
 	Url         string `protobuf:"bytes,10,opt,name=url,proto3" json:"url,omitempty"`
@@ -914,13 +934,13 @@ var File_model_osint_proto protoreflect.FileDescriptor
 
 const file_model_osint_proto_rawDesc = "" +
 	"\n" +
-	"\x11model/osint.proto\x12\x05model\x1a\x12model/common.proto\"\xaf\x04\n" +
-	"\bRelation\x12\x0f\n" +
-	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
-	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x13\n" +
-	"\x04from\x18\x03 \x01(\tR\x05_from\x12\x0f\n" +
-	"\x02to\x18\x04 \x01(\tR\x03_to\x12\x11\n" +
-	"\x03rev\x18\x05 \x01(\tR\x04_rev\x12\x12\n" +
+	"\x11model/osint.proto\x12\x05model\x1a\x12model/common.proto\"\xaa\x04\n" +
+	"\bRelation\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x12\n" +
+	"\x04from\x18\x03 \x01(\tR\x04from\x12\x0e\n" +
+	"\x02to\x18\x04 \x01(\tR\x02to\x12\x10\n" +
+	"\x03rev\x18\x05 \x01(\tR\x03rev\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x1e\n" +
 	"\n" +
@@ -944,11 +964,11 @@ const file_model_osint_proto_rawDesc = "" +
 	"floatValue\x12\x1f\n" +
 	"\n" +
 	"bool_value\x18\x05 \x01(\bH\x00R\tboolValueB\x06\n" +
-	"\x04kind\"\x95\x02\n" +
-	"\x05Event\x12\x0f\n" +
-	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
-	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
-	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x18\n" +
+	"\x04kind\"\x92\x02\n" +
+	"\x05Event\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
+	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x18\n" +
 	"\avisible\x18\x04 \x01(\bR\avisible\x12/\n" +
 	"\blocation\x18\n" +
 	" \x01(\v2\x13.model.LocationDataR\blocation\x12\x14\n" +
@@ -958,11 +978,11 @@ const file_model_osint_proto_rawDesc = "" +
 	"happenedAt\x12\x1d\n" +
 	"\n" +
 	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x12\x12\n" +
-	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xae\x02\n" +
-	"\x06Source\x12\x0f\n" +
-	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
-	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
-	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x18\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xab\x02\n" +
+	"\x06Source\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
+	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x18\n" +
 	"\avisible\x18\x04 \x01(\bR\avisible\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x10\n" +
@@ -976,11 +996,11 @@ const file_model_osint_proto_rawDesc = "" +
 	"created_at\x18\x14 \x01(\x03R\tcreatedAt\x12\x1d\n" +
 	"\n" +
 	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x12\x12\n" +
-	"\x04tags\x18\x1e \x03(\tR\x04tags\"\x8f\x02\n" +
-	"\x06Person\x12\x0f\n" +
-	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
-	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
-	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x18\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\"\x8c\x02\n" +
+	"\x06Person\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
+	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x18\n" +
 	"\avisible\x18\x04 \x01(\bR\avisible\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x12\n" +
@@ -991,11 +1011,11 @@ const file_model_osint_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x12\x12\n" +
 	"\x04tags\x18\x1e \x03(\tR\x04tags\x12\x18\n" +
-	"\aaliases\x18\x1f \x03(\tR\aaliases\"\x82\x02\n" +
-	"\fOrganization\x12\x0f\n" +
-	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
-	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
-	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x18\n" +
+	"\aaliases\x18\x1f \x03(\tR\aaliases\"\xff\x01\n" +
+	"\fOrganization\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
+	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x18\n" +
 	"\avisible\x18\x04 \x01(\bR\avisible\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x12\n" +
@@ -1004,11 +1024,11 @@ const file_model_osint_proto_rawDesc = "" +
 	"founded_at\x18\x14 \x01(\x03R\tfoundedAt\x12#\n" +
 	"\rdiscovered_at\x18\x15 \x01(\x03R\fdiscoveredAt\x12!\n" +
 	"\flast_visited\x18\x16 \x01(\x03R\vlastVisited\x12\x12\n" +
-	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xb7\x02\n" +
-	"\aWebsite\x12\x0f\n" +
-	"\x02id\x18\x01 \x01(\tR\x03_id\x12\x11\n" +
-	"\x03key\x18\x02 \x01(\tR\x04_key\x12\x11\n" +
-	"\x03rev\x18\x03 \x01(\tR\x04_rev\x12\x18\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xb4\x02\n" +
+	"\aWebsite\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
+	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
+	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x18\n" +
 	"\avisible\x18\x04 \x01(\bR\avisible\x12\x10\n" +
 	"\x03url\x18\n" +
 	" \x01(\tR\x03url\x12\x16\n" +

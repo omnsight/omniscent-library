@@ -3,12 +3,13 @@ name: Automatic Tagging
 on:
   push:
     branches:
-      - main
-      - pre-release
+      - 'main'
+      - 'pre-release'
 
 jobs:
   tag:
     name: Create New Tag
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
 
     permissions:
