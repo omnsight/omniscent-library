@@ -7,7 +7,7 @@ import "google/api/annotations.proto";
 
 option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/user;user";
 
-service UserService {
+service AuthenticationService {
     rpc RegisterUser(RegisterUserRequest) returns (RegisterUserResponse) {
         option (google.api.http) = {
             post: "/v1/users/register"
