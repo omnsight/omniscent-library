@@ -22,6 +22,9 @@
     },
     {
       "name": "WebsiteService"
+    },
+    {
+      "name": "UserService"
     }
   ],
   "consumes": [
@@ -699,6 +702,106 @@
         ]
       }
     },
+    "/v1/users/login": {
+      "post": {
+        "operationId": "UserService_LoginUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/userLoginUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "user.id",
+            "description": "basic info",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user.name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user.password",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user.isAdmin",
+            "description": "special\n@gotags: json:\"is_admin,omitempty\"",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
+    "/v1/users/register": {
+      "post": {
+        "operationId": "UserService_RegisterUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/userRegisterUserResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "user.id",
+            "description": "basic info",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user.name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user.password",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "user.isAdmin",
+            "description": "special\n@gotags: json:\"is_admin,omitempty\"",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          }
+        ],
+        "tags": [
+          "UserService"
+        ]
+      }
+    },
     "/v1/websites": {
       "post": {
         "operationId": "WebsiteService_CreateWebsite",
@@ -1355,6 +1458,25 @@
         }
       }
     },
+    "modelUser": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "title": "basic info"
+        },
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "isAdmin": {
+          "type": "boolean",
+          "title": "special\n@gotags: json:\"is_admin,omitempty\""
+        }
+      }
+    },
     "modelWebsite": {
       "type": "object",
       "properties": {
@@ -1435,6 +1557,22 @@
             "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
+        }
+      }
+    },
+    "userLoginUserResponse": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/modelUser"
+        }
+      }
+    },
+    "userRegisterUserResponse": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/modelUser"
         }
       }
     }
