@@ -8,8 +8,9 @@ option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/model;mode
 
 message Relation {
   // Common data
-  // @gotags: json:"_id,omitempty"
+  // @gotags: valid:"_id"
   string id = 1;
+  
   // @gotags: json:"_key,omitempty"
   string key = 2;
   // @gotags: json:"_from,omitempty"
@@ -20,18 +21,26 @@ message Relation {
   string rev = 5;
   // Main Data
   string name = 10;
+  // @gotags: json:"confidence,omitempty"
   int32 confidence = 11;
   map<string, Value> attributes = 12;
   // Time data
+  // @gotags: json:"created_at,omitempty"
   int64 created_at = 20;
+  // @gotags: json:"updated_at,omitempty"
   int64 updated_at = 21;
 
   message Value {
     oneof kind {
+      // @gotags: json:"string_value,omitempty"
       string string_value = 1;
+      // @gotags: json:"int_value,omitempty"
       int64 int_value = 2;
+      // @gotags: json:"double_value,omitempty"
       double double_value = 3;
+      // @gotags: json:"float_value,omitempty"
       float float_value = 4;
+      // @gotags: json:"bool_value,omitempty"
       bool bool_value = 5;
     }
   }
@@ -51,7 +60,9 @@ message Event {
   string title = 11;
   string description = 12;
   // Time data
+  // @gotags: json:"happened_at,omitempty"
   int64 happened_at = 20;
+  // @gotags: json:"updated_at,omitempty"
   int64 updated_at = 21;
   // Additional
   repeated string tags = 30;
@@ -69,11 +80,14 @@ message Source {
   // Main Data
   string name = 10;
   string url = 11;
+  // @gotags: json:"root_url,omitempty"
   string root_url = 12;
   int32 reliability = 13;
   int32 monitoring = 14;
   // Time data
+  // @gotags: json:"created_at,omitempty"
   int64 created_at = 20;
+  // @gotags: json:"updated_at,omitempty"
   int64 updated_at = 21;
   // Additional
   repeated string tags = 30;
@@ -93,7 +107,9 @@ message Person {
   string role = 11;
   string nationality = 12;
   // Time data
+  // @gotags: json:"birth_date,omitempty"
   int64 birth_date = 20;
+  // @gotags: json:"updated_at,omitempty"
   int64 updated_at = 21;
   // Additional
   repeated string tags = 30;
@@ -113,8 +129,11 @@ message Organization {
   string name = 10;
   string type = 11;
   // Time data
+  // @gotags: json:"founded_at,omitempty"
   int64 founded_at = 20;
+  // @gotags: json:"discovered_at,omitempty"
   int64 discovered_at = 21;
+  // @gotags: json:"last_visited,omitempty"
   int64 last_visited = 22;
   // Additional
   repeated string tags = 30;
@@ -135,8 +154,11 @@ message Website {
   string title = 12;
   string description = 13;
   // Time data
+  // @gotags: json:"founded_at,omitempty"
   int64 founded_at = 20;
+  // @gotags: json:"discovered_at,omitempty"
   int64 discovered_at = 21;
+  // @gotags: json:"last_visited,omitempty"
   int64 last_visited = 22;
   // Additional
   repeated string tags = 30;

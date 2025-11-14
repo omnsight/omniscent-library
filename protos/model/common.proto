@@ -7,11 +7,16 @@ option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/model;mode
 message LocationData {
   float latitude = 1;
   float longitude = 2;
+  // @gotags: json:"country_code,omitempty"
   string country_code = 3;
+  // @gotags: json:"administrative_area,omitempty"
   string administrative_area = 4;
+  // @gotags: json:"sub_administrative_area,omitempty"
   string sub_administrative_area = 5;
   string locality = 7;
+  // @gotags: json:"sub_locality,omitempty"
   string sub_locality = 8;
   string address = 9;
+  // @gotags: json:"postal_code,omitempty"
   int32 postal_code = 10;
 }

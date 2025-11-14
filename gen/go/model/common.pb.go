@@ -22,18 +22,23 @@ const (
 )
 
 type LocationData struct {
-	state                 protoimpl.MessageState `protogen:"open.v1"`
-	Latitude              float32                `protobuf:"fixed32,1,opt,name=latitude,proto3" json:"latitude,omitempty"`
-	Longitude             float32                `protobuf:"fixed32,2,opt,name=longitude,proto3" json:"longitude,omitempty"`
-	CountryCode           string                 `protobuf:"bytes,3,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
-	AdministrativeArea    string                 `protobuf:"bytes,4,opt,name=administrative_area,json=administrativeArea,proto3" json:"administrative_area,omitempty"`
-	SubAdministrativeArea string                 `protobuf:"bytes,5,opt,name=sub_administrative_area,json=subAdministrativeArea,proto3" json:"sub_administrative_area,omitempty"`
-	Locality              string                 `protobuf:"bytes,7,opt,name=locality,proto3" json:"locality,omitempty"`
-	SubLocality           string                 `protobuf:"bytes,8,opt,name=sub_locality,json=subLocality,proto3" json:"sub_locality,omitempty"`
-	Address               string                 `protobuf:"bytes,9,opt,name=address,proto3" json:"address,omitempty"`
-	PostalCode            int32                  `protobuf:"varint,10,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
-	unknownFields         protoimpl.UnknownFields
-	sizeCache             protoimpl.SizeCache
+	state     protoimpl.MessageState `protogen:"open.v1"`
+	Latitude  float32                `protobuf:"fixed32,1,opt,name=latitude,proto3" json:"latitude,omitempty"`
+	Longitude float32                `protobuf:"fixed32,2,opt,name=longitude,proto3" json:"longitude,omitempty"`
+	// @gotags: json:"country_code,omitempty"
+	CountryCode string `protobuf:"bytes,3,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	// @gotags: json:"administrative_area,omitempty"
+	AdministrativeArea string `protobuf:"bytes,4,opt,name=administrative_area,json=administrativeArea,proto3" json:"administrative_area,omitempty"`
+	// @gotags: json:"sub_administrative_area,omitempty"
+	SubAdministrativeArea string `protobuf:"bytes,5,opt,name=sub_administrative_area,json=subAdministrativeArea,proto3" json:"sub_administrative_area,omitempty"`
+	Locality              string `protobuf:"bytes,7,opt,name=locality,proto3" json:"locality,omitempty"`
+	// @gotags: json:"sub_locality,omitempty"
+	SubLocality string `protobuf:"bytes,8,opt,name=sub_locality,json=subLocality,proto3" json:"sub_locality,omitempty"`
+	Address     string `protobuf:"bytes,9,opt,name=address,proto3" json:"address,omitempty"`
+	// @gotags: json:"postal_code,omitempty"
+	PostalCode    int32 `protobuf:"varint,10,opt,name=postal_code,json=postalCode,proto3" json:"postal_code,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
 }
 
 func (x *LocationData) Reset() {

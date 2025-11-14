@@ -78,8 +78,8 @@ func (x *GetEventsRequest) GetEndTime() int64 {
 
 type GetEventsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Relation      []*model.Relation      `protobuf:"bytes,1,rep,name=relation,proto3" json:"relation,omitempty"`
-	Event         []*model.Event         `protobuf:"bytes,2,rep,name=event,proto3" json:"event,omitempty"`
+	Relations     []*model.Relation      `protobuf:"bytes,1,rep,name=relations,proto3" json:"relations,omitempty"`
+	Events        []*model.Event         `protobuf:"bytes,2,rep,name=events,proto3" json:"events,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -114,16 +114,16 @@ func (*GetEventsResponse) Descriptor() ([]byte, []int) {
 	return file_geovision_event_service_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GetEventsResponse) GetRelation() []*model.Relation {
+func (x *GetEventsResponse) GetRelations() []*model.Relation {
 	if x != nil {
-		return x.Relation
+		return x.Relations
 	}
 	return nil
 }
 
-func (x *GetEventsResponse) GetEvent() []*model.Event {
+func (x *GetEventsResponse) GetEvents() []*model.Event {
 	if x != nil {
-		return x.Event
+		return x.Events
 	}
 	return nil
 }
@@ -576,10 +576,10 @@ const file_geovision_event_service_proto_rawDesc = "" +
 	"\x10GetEventsRequest\x12\x1d\n" +
 	"\n" +
 	"start_time\x18\x01 \x01(\x03R\tstartTime\x12\x19\n" +
-	"\bend_time\x18\x02 \x01(\x03R\aendTime\"d\n" +
-	"\x11GetEventsResponse\x12+\n" +
-	"\brelation\x18\x01 \x03(\v2\x0f.model.RelationR\brelation\x12\"\n" +
-	"\x05event\x18\x02 \x03(\v2\f.model.EventR\x05event\"#\n" +
+	"\bend_time\x18\x02 \x01(\x03R\aendTime\"h\n" +
+	"\x11GetEventsResponse\x12-\n" +
+	"\trelations\x18\x01 \x03(\v2\x0f.model.RelationR\trelations\x12$\n" +
+	"\x06events\x18\x02 \x03(\v2\f.model.EventR\x06events\"#\n" +
 	"\x0fGetEventRequest\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\"6\n" +
 	"\x10GetEventResponse\x12\"\n" +
@@ -641,8 +641,8 @@ var file_geovision_event_service_proto_goTypes = []any{
 	(*model.RelatedEntity)(nil),             // 14: model.RelatedEntity
 }
 var file_geovision_event_service_proto_depIdxs = []int32{
-	12, // 0: geovision.GetEventsResponse.relation:type_name -> model.Relation
-	13, // 1: geovision.GetEventsResponse.event:type_name -> model.Event
+	12, // 0: geovision.GetEventsResponse.relations:type_name -> model.Relation
+	13, // 1: geovision.GetEventsResponse.events:type_name -> model.Event
 	13, // 2: geovision.GetEventResponse.event:type_name -> model.Event
 	14, // 3: geovision.GetEventRelatedEntitiesResponse.entities:type_name -> model.RelatedEntity
 	13, // 4: geovision.CreateEventRequest.event:type_name -> model.Event
