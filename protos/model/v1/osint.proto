@@ -4,7 +4,7 @@ package model.v1;
 
 import "model/v1/common.proto";
 
-option go_package = "github.com/bouncingmaxt/omniscent-library/gen/model;model";
+option go_package = "github.com/bouncingmaxt/omniscent-library/gen/model/v1;model";
 
 message Relation {
   // Common data
