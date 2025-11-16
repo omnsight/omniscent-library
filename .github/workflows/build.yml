@@ -21,8 +21,6 @@ jobs:
         uses: bufbuild/buf-action@v1
         with:
           setup_only: true
-        run:
-          buf generate
 
       - name: Set up Go
         uses: actions/setup-go@v5
@@ -31,6 +29,7 @@ jobs:
 
       - name: Injest Go Tags
         run: |
+          buf generate
           go install github.com/favadi/protoc-go-inject-tag@latest
           protoc-go-inject-tag -input=./gen/**/*.pb.go
 
