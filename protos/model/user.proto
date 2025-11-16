@@ -2,7 +2,12 @@ syntax = "proto3";
 
 package model;
 
-option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/model;model";
+option go_package = "github.com/bouncingmaxt/omniscent-library/gen/model;model";
+
+enum UserRole {
+    USER = 0;
+    ADMIN = 1;
+}
 
 message User {
     // basic info
@@ -10,6 +15,5 @@ message User {
     string name = 2;
     string password = 3;
     // special
-    // @gotags: json:"is_admin,omitempty"
-    bool is_admin = 50;
+    UserRole role = 50;
 }
