@@ -20,7 +20,7 @@ jobs:
       - name: Generate Protobuf code
         uses: bufbuild/buf-action@v1
         with:
-          setup_only: true
+          push: false
 
       - name: Set up Go
         uses: actions/setup-go@v5
