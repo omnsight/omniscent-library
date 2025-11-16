@@ -1,0 +1,42 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+      - '!pre-release'
+
+jobs:
+  generate-proto:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate Protobuf code
+        uses: bufbuild/buf-action@v1
+        with:
+          input: .
+          command: generate
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      - name: Injest Go Tags
+        run: |
+          go install github.com/favadi/protoc-go-inject-tag@latest
+          protoc-go-inject-tag -input=./gen/*.pb.go
+
+      - name: Commit and push generated files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "auto: Refresh protobuf generated files in ./gen/"
+          commit_options: '--no-verify'
+          file_pattern: 'gen/'
+          branch: ${{ github.ref_name }}
