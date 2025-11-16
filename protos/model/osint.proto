@@ -8,11 +8,16 @@ option go_package = "github.com/bouncingmaxt/omniscent-library/gen/model;model";
 
 message Relation {
   // Common data
-  string id = 1; // @gotags: json:"_id,omitempty"
-  string key = 2; // @gotags: json:"_key,omitempty"
-  string from = 3; // @gotags: json:"_from,omitempty"
-  string to = 4; // @gotags: json:"_to,omitempty"
-  string rev = 5; // @gotags: json:"_rev,omitempty"
+  // @gotags: json:"_id,omitempty"
+  string id = 1;
+  // @gotags: json:"_key,omitempty"
+  string key = 2;
+  // @gotags: json:"_from,omitempty"
+  string from = 3;
+  // @gotags: json:"_to,omitempty"
+  string to = 4;
+  // @gotags: json:"_rev,omitempty"
+  string rev = 5;
   // Main Data
   string name = 10;
   int32 confidence = 11;
@@ -34,9 +39,12 @@ message Relation {
 
 message Event {
   // Common data
-  string id = 1; // @gotags: json:"_id,omitempty"
-  string key = 2; // @gotags: json:"_key,omitempty"
-  string rev = 3; // @gotags: json:"_rev,omitempty"
+  // @gotags: json:"_id,omitempty"
+  string id = 1;
+  // @gotags: json:"_key,omitempty"
+  string key = 2;
+  // @gotags: json:"_rev,omitempty"
+  string rev = 3;
   bool visible = 4;
   // Main Data
   LocationData location = 10;
@@ -51,9 +59,12 @@ message Event {
 
 message Source {
   // Common data
-  string id = 1; // @gotags: json:"_id,omitempty"
-  string key = 2; // @gotags: json:"_key,omitempty"
-  string rev = 3; // @gotags: json:"_rev,omitempty"
+  // @gotags: json:"_id,omitempty"
+  string id = 1;
+  // @gotags: json:"_key,omitempty"
+  string key = 2;
+  // @gotags: json:"_rev,omitempty"
+  string rev = 3;
   bool visible = 4;
   // Main Data
   string name = 10;
@@ -70,9 +81,12 @@ message Source {
 
 message Person {
   // Common data
-  string id = 1; // @gotags: json:"_id,omitempty"
-  string key = 2; // @gotags: json:"_key,omitempty"
-  string rev = 3; // @gotags: json:"_rev,omitempty"
+  // @gotags: json:"_id,omitempty"
+  string id = 1;
+  // @gotags: json:"_key,omitempty"
+  string key = 2;
+  // @gotags: json:"_rev,omitempty"
+  string rev = 3;
   bool visible = 4;
   // Main Data
   string name = 10;
@@ -88,9 +102,12 @@ message Person {
 
 message Organization {
   // Common data
-  string id = 1; // @gotags: json:"_id,omitempty"
-  string key = 2; // @gotags: json:"_key,omitempty"
-  string rev = 3; // @gotags: json:"_rev,omitempty"
+  // @gotags: json:"_id,omitempty"
+  string id = 1;
+  // @gotags: json:"_key,omitempty"
+  string key = 2;
+  // @gotags: json:"_rev,omitempty"
+  string rev = 3;
   bool visible = 4;
   // Main Data
   string name = 10;
@@ -105,9 +122,12 @@ message Organization {
 
 message Website {
   // Common data
-  string id = 1; // @gotags: json:"_id,omitempty"
-  string key = 2; // @gotags: json:"_key,omitempty"
-  string rev = 3; // @gotags: json:"_rev,omitempty"
+  // @gotags: json:"_id,omitempty"
+  string id = 1;
+  // @gotags: json:"_key,omitempty"
+  string key = 2;
+  // @gotags: json:"_rev,omitempty"
+  string rev = 3;
   bool visible = 4;
   // Main Data
   string url = 10;
