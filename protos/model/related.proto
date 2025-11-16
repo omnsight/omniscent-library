@@ -5,7 +5,7 @@ package model;
 import "model/common.proto";
 import "model/osint.proto";
 
-option go_package = "github.com/bouncingmaxt/omniscent-library/gen/go/model;model";
+option go_package = "github.com/bouncingmaxt/omniscent-library/gen/model;model";
 
 message RelatedEntity {
   Relation relation = 1;
