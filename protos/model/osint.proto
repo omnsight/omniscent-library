@@ -8,7 +8,7 @@ option go_package = "github.com/bouncingmaxt/omniscent-library/gen/model;model";
 
 message Relation {
   // Common data
-  string id = 1; // @gotags: valid:"_id"
+  string id = 1; // @gotags: json:"_id,omitempty"
   string key = 2; // @gotags: json:"_key,omitempty"
   string from = 3; // @gotags: json:"_from,omitempty"
   string to = 4; // @gotags: json:"_to,omitempty"
