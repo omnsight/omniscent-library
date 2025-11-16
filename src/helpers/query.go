@@ -6,7 +6,7 @@ import (
 	"fmt"
 
 	"github.com/arangodb/go-driver"
-	"github.com/bouncingmaxt/omniscent-library/gen/model"
+	"github.com/bouncingmaxt/omniscent-library/gen/model/v1"
 	"github.com/sirupsen/logrus"
 	"google.golang.org/protobuf/encoding/protojson"
 )
