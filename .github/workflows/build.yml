@@ -30,7 +30,7 @@ jobs:
       - name: Injest Go Tags
         run: |
           go install github.com/favadi/protoc-go-inject-tag@latest
-          protoc-go-inject-tag -input=./gen/**.pb.go
+          protoc-go-inject-tag -input=./gen/**/*.pb.go
 
       - name: Commit and push generated files
         uses: stefanzweifel/git-auto-commit-action@v5
