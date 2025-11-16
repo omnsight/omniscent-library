@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        (unknown)
-// source: model/osint.proto
+// source: model/v1/osint.proto
 
 package model
 
@@ -47,7 +47,7 @@ type Relation struct {
 
 func (x *Relation) Reset() {
 	*x = Relation{}
-	mi := &file_model_osint_proto_msgTypes[0]
+	mi := &file_model_v1_osint_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -59,7 +59,7 @@ func (x *Relation) String() string {
 func (*Relation) ProtoMessage() {}
 
 func (x *Relation) ProtoReflect() protoreflect.Message {
-	mi := &file_model_osint_proto_msgTypes[0]
+	mi := &file_model_v1_osint_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -72,7 +72,7 @@ func (x *Relation) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Relation.ProtoReflect.Descriptor instead.
 func (*Relation) Descriptor() ([]byte, []int) {
-	return file_model_osint_proto_rawDescGZIP(), []int{0}
+	return file_model_v1_osint_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Relation) GetId() string {
@@ -170,7 +170,7 @@ type Event struct {
 
 func (x *Event) Reset() {
 	*x = Event{}
-	mi := &file_model_osint_proto_msgTypes[1]
+	mi := &file_model_v1_osint_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -182,7 +182,7 @@ func (x *Event) String() string {
 func (*Event) ProtoMessage() {}
 
 func (x *Event) ProtoReflect() protoreflect.Message {
-	mi := &file_model_osint_proto_msgTypes[1]
+	mi := &file_model_v1_osint_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -195,7 +195,7 @@ func (x *Event) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Event.ProtoReflect.Descriptor instead.
 func (*Event) Descriptor() ([]byte, []int) {
-	return file_model_osint_proto_rawDescGZIP(), []int{1}
+	return file_model_v1_osint_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *Event) GetId() string {
@@ -295,7 +295,7 @@ type Source struct {
 
 func (x *Source) Reset() {
 	*x = Source{}
-	mi := &file_model_osint_proto_msgTypes[2]
+	mi := &file_model_v1_osint_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -307,7 +307,7 @@ func (x *Source) String() string {
 func (*Source) ProtoMessage() {}
 
 func (x *Source) ProtoReflect() protoreflect.Message {
-	mi := &file_model_osint_proto_msgTypes[2]
+	mi := &file_model_v1_osint_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -320,7 +320,7 @@ func (x *Source) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Source.ProtoReflect.Descriptor instead.
 func (*Source) Descriptor() ([]byte, []int) {
-	return file_model_osint_proto_rawDescGZIP(), []int{2}
+	return file_model_v1_osint_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *Source) GetId() string {
@@ -433,7 +433,7 @@ type Person struct {
 
 func (x *Person) Reset() {
 	*x = Person{}
-	mi := &file_model_osint_proto_msgTypes[3]
+	mi := &file_model_v1_osint_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -445,7 +445,7 @@ func (x *Person) String() string {
 func (*Person) ProtoMessage() {}
 
 func (x *Person) ProtoReflect() protoreflect.Message {
-	mi := &file_model_osint_proto_msgTypes[3]
+	mi := &file_model_v1_osint_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -458,7 +458,7 @@ func (x *Person) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Person.ProtoReflect.Descriptor instead.
 func (*Person) Descriptor() ([]byte, []int) {
-	return file_model_osint_proto_rawDescGZIP(), []int{3}
+	return file_model_v1_osint_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *Person) GetId() string {
@@ -563,7 +563,7 @@ type Organization struct {
 
 func (x *Organization) Reset() {
 	*x = Organization{}
-	mi := &file_model_osint_proto_msgTypes[4]
+	mi := &file_model_v1_osint_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -575,7 +575,7 @@ func (x *Organization) String() string {
 func (*Organization) ProtoMessage() {}
 
 func (x *Organization) ProtoReflect() protoreflect.Message {
-	mi := &file_model_osint_proto_msgTypes[4]
+	mi := &file_model_v1_osint_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -588,7 +588,7 @@ func (x *Organization) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Organization.ProtoReflect.Descriptor instead.
 func (*Organization) Descriptor() ([]byte, []int) {
-	return file_model_osint_proto_rawDescGZIP(), []int{4}
+	return file_model_v1_osint_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *Organization) GetId() string {
@@ -688,7 +688,7 @@ type Website struct {
 
 func (x *Website) Reset() {
 	*x = Website{}
-	mi := &file_model_osint_proto_msgTypes[5]
+	mi := &file_model_v1_osint_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -700,7 +700,7 @@ func (x *Website) String() string {
 func (*Website) ProtoMessage() {}
 
 func (x *Website) ProtoReflect() protoreflect.Message {
-	mi := &file_model_osint_proto_msgTypes[5]
+	mi := &file_model_v1_osint_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -713,7 +713,7 @@ func (x *Website) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Website.ProtoReflect.Descriptor instead.
 func (*Website) Descriptor() ([]byte, []int) {
-	return file_model_osint_proto_rawDescGZIP(), []int{5}
+	return file_model_v1_osint_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Website) GetId() string {
@@ -816,7 +816,7 @@ type Relation_Value struct {
 
 func (x *Relation_Value) Reset() {
 	*x = Relation_Value{}
-	mi := &file_model_osint_proto_msgTypes[7]
+	mi := &file_model_v1_osint_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -828,7 +828,7 @@ func (x *Relation_Value) String() string {
 func (*Relation_Value) ProtoMessage() {}
 
 func (x *Relation_Value) ProtoReflect() protoreflect.Message {
-	mi := &file_model_osint_proto_msgTypes[7]
+	mi := &file_model_v1_osint_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -841,7 +841,7 @@ func (x *Relation_Value) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Relation_Value.ProtoReflect.Descriptor instead.
 func (*Relation_Value) Descriptor() ([]byte, []int) {
-	return file_model_osint_proto_rawDescGZIP(), []int{0, 1}
+	return file_model_v1_osint_proto_rawDescGZIP(), []int{0, 1}
 }
 
 func (x *Relation_Value) GetKind() isRelation_Value_Kind {
@@ -930,11 +930,11 @@ func (*Relation_Value_FloatValue) isRelation_Value_Kind() {}
 
 func (*Relation_Value_BoolValue) isRelation_Value_Kind() {}
 
-var File_model_osint_proto protoreflect.FileDescriptor
+var File_model_v1_osint_proto protoreflect.FileDescriptor
 
-const file_model_osint_proto_rawDesc = "" +
+const file_model_v1_osint_proto_rawDesc = "" +
 	"\n" +
-	"\x11model/osint.proto\x12\x05model\x1a\x12model/common.proto\"\xaa\x04\n" +
+	"\x14model/v1/osint.proto\x12\bmodel.v1\x1a\x15model/v1/common.proto\"\xb0\x04\n" +
 	"\bRelation\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x12\n" +
@@ -945,17 +945,17 @@ const file_model_osint_proto_rawDesc = "" +
 	" \x01(\tR\x04name\x12\x1e\n" +
 	"\n" +
 	"confidence\x18\v \x01(\x05R\n" +
-	"confidence\x12?\n" +
+	"confidence\x12B\n" +
 	"\n" +
-	"attributes\x18\f \x03(\v2\x1f.model.Relation.AttributesEntryR\n" +
+	"attributes\x18\f \x03(\v2\".model.v1.Relation.AttributesEntryR\n" +
 	"attributes\x12\x1d\n" +
 	"\n" +
 	"created_at\x18\x14 \x01(\x03R\tcreatedAt\x12\x1d\n" +
 	"\n" +
-	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x1aT\n" +
+	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x1aW\n" +
 	"\x0fAttributesEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12+\n" +
-	"\x05value\x18\x02 \x01(\v2\x15.model.Relation.ValueR\x05value:\x028\x01\x1a\xbc\x01\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12.\n" +
+	"\x05value\x18\x02 \x01(\v2\x18.model.v1.Relation.ValueR\x05value:\x028\x01\x1a\xbc\x01\n" +
 	"\x05Value\x12#\n" +
 	"\fstring_value\x18\x01 \x01(\tH\x00R\vstringValue\x12\x1d\n" +
 	"\tint_value\x18\x02 \x01(\x03H\x00R\bintValue\x12#\n" +
@@ -964,14 +964,14 @@ const file_model_osint_proto_rawDesc = "" +
 	"floatValue\x12\x1f\n" +
 	"\n" +
 	"bool_value\x18\x05 \x01(\bH\x00R\tboolValueB\x06\n" +
-	"\x04kind\"\x92\x02\n" +
+	"\x04kind\"\x95\x02\n" +
 	"\x05Event\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
 	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x18\n" +
-	"\avisible\x18\x04 \x01(\bR\avisible\x12/\n" +
+	"\avisible\x18\x04 \x01(\bR\avisible\x122\n" +
 	"\blocation\x18\n" +
-	" \x01(\v2\x13.model.LocationDataR\blocation\x12\x14\n" +
+	" \x01(\v2\x16.model.v1.LocationDataR\blocation\x12\x14\n" +
 	"\x05title\x18\v \x01(\tR\x05title\x12 \n" +
 	"\vdescription\x18\f \x01(\tR\vdescription\x12\x1f\n" +
 	"\vhappened_at\x18\x14 \x01(\x03R\n" +
@@ -1042,33 +1042,33 @@ const file_model_osint_proto_rawDesc = "" +
 	"\x04tags\x18\x1e \x03(\tR\x04tagsB;Z9github.com/bouncingmaxt/omniscent-library/gen/model;modelb\x06proto3"
 
 var (
-	file_model_osint_proto_rawDescOnce sync.Once
-	file_model_osint_proto_rawDescData []byte
+	file_model_v1_osint_proto_rawDescOnce sync.Once
+	file_model_v1_osint_proto_rawDescData []byte
 )
 
-func file_model_osint_proto_rawDescGZIP() []byte {
-	file_model_osint_proto_rawDescOnce.Do(func() {
-		file_model_osint_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_model_osint_proto_rawDesc), len(file_model_osint_proto_rawDesc)))
+func file_model_v1_osint_proto_rawDescGZIP() []byte {
+	file_model_v1_osint_proto_rawDescOnce.Do(func() {
+		file_model_v1_osint_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_model_v1_osint_proto_rawDesc), len(file_model_v1_osint_proto_rawDesc)))
 	})
-	return file_model_osint_proto_rawDescData
+	return file_model_v1_osint_proto_rawDescData
 }
 
-var file_model_osint_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
-var file_model_osint_proto_goTypes = []any{
-	(*Relation)(nil),       // 0: model.Relation
-	(*Event)(nil),          // 1: model.Event
-	(*Source)(nil),         // 2: model.Source
-	(*Person)(nil),         // 3: model.Person
-	(*Organization)(nil),   // 4: model.Organization
-	(*Website)(nil),        // 5: model.Website
-	nil,                    // 6: model.Relation.AttributesEntry
-	(*Relation_Value)(nil), // 7: model.Relation.Value
-	(*LocationData)(nil),   // 8: model.LocationData
+var file_model_v1_osint_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_model_v1_osint_proto_goTypes = []any{
+	(*Relation)(nil),       // 0: model.v1.Relation
+	(*Event)(nil),          // 1: model.v1.Event
+	(*Source)(nil),         // 2: model.v1.Source
+	(*Person)(nil),         // 3: model.v1.Person
+	(*Organization)(nil),   // 4: model.v1.Organization
+	(*Website)(nil),        // 5: model.v1.Website
+	nil,                    // 6: model.v1.Relation.AttributesEntry
+	(*Relation_Value)(nil), // 7: model.v1.Relation.Value
+	(*LocationData)(nil),   // 8: model.v1.LocationData
 }
-var file_model_osint_proto_depIdxs = []int32{
-	6, // 0: model.Relation.attributes:type_name -> model.Relation.AttributesEntry
-	8, // 1: model.Event.location:type_name -> model.LocationData
-	7, // 2: model.Relation.AttributesEntry.value:type_name -> model.Relation.Value
+var file_model_v1_osint_proto_depIdxs = []int32{
+	6, // 0: model.v1.Relation.attributes:type_name -> model.v1.Relation.AttributesEntry
+	8, // 1: model.v1.Event.location:type_name -> model.v1.LocationData
+	7, // 2: model.v1.Relation.AttributesEntry.value:type_name -> model.v1.Relation.Value
 	3, // [3:3] is the sub-list for method output_type
 	3, // [3:3] is the sub-list for method input_type
 	3, // [3:3] is the sub-list for extension type_name
@@ -1076,13 +1076,13 @@ var file_model_osint_proto_depIdxs = []int32{
 	0, // [0:3] is the sub-list for field type_name
 }
 
-func init() { file_model_osint_proto_init() }
-func file_model_osint_proto_init() {
-	if File_model_osint_proto != nil {
+func init() { file_model_v1_osint_proto_init() }
+func file_model_v1_osint_proto_init() {
+	if File_model_v1_osint_proto != nil {
 		return
 	}
-	file_model_common_proto_init()
-	file_model_osint_proto_msgTypes[7].OneofWrappers = []any{
+	file_model_v1_common_proto_init()
+	file_model_v1_osint_proto_msgTypes[7].OneofWrappers = []any{
 		(*Relation_Value_StringValue)(nil),
 		(*Relation_Value_IntValue)(nil),
 		(*Relation_Value_DoubleValue)(nil),
@@ -1093,17 +1093,17 @@ func file_model_osint_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_model_osint_proto_rawDesc), len(file_model_osint_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_model_v1_osint_proto_rawDesc), len(file_model_v1_osint_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_model_osint_proto_goTypes,
-		DependencyIndexes: file_model_osint_proto_depIdxs,
-		MessageInfos:      file_model_osint_proto_msgTypes,
+		GoTypes:           file_model_v1_osint_proto_goTypes,
+		DependencyIndexes: file_model_v1_osint_proto_depIdxs,
+		MessageInfos:      file_model_v1_osint_proto_msgTypes,
 	}.Build()
-	File_model_osint_proto = out.File
-	file_model_osint_proto_goTypes = nil
-	file_model_osint_proto_depIdxs = nil
+	File_model_v1_osint_proto = out.File
+	file_model_v1_osint_proto_goTypes = nil
+	file_model_v1_osint_proto_depIdxs = nil
 }

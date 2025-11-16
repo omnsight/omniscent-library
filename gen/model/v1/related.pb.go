@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        (unknown)
-// source: model/related.proto
+// source: model/v1/related.proto
 
 package model
 
@@ -37,7 +37,7 @@ type RelatedEntity struct {
 
 func (x *RelatedEntity) Reset() {
 	*x = RelatedEntity{}
-	mi := &file_model_related_proto_msgTypes[0]
+	mi := &file_model_v1_related_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -49,7 +49,7 @@ func (x *RelatedEntity) String() string {
 func (*RelatedEntity) ProtoMessage() {}
 
 func (x *RelatedEntity) ProtoReflect() protoreflect.Message {
-	mi := &file_model_related_proto_msgTypes[0]
+	mi := &file_model_v1_related_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -62,7 +62,7 @@ func (x *RelatedEntity) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RelatedEntity.ProtoReflect.Descriptor instead.
 func (*RelatedEntity) Descriptor() ([]byte, []int) {
-	return file_model_related_proto_rawDescGZIP(), []int{0}
+	return file_model_v1_related_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *RelatedEntity) GetRelation() *Relation {
@@ -143,46 +143,46 @@ func (*RelatedEntity_Organization) isRelatedEntity_Entity() {}
 
 func (*RelatedEntity_Website) isRelatedEntity_Entity() {}
 
-var File_model_related_proto protoreflect.FileDescriptor
+var File_model_v1_related_proto protoreflect.FileDescriptor
 
-const file_model_related_proto_rawDesc = "" +
+const file_model_v1_related_proto_rawDesc = "" +
 	"\n" +
-	"\x13model/related.proto\x12\x05model\x1a\x12model/common.proto\x1a\x11model/osint.proto\"\xff\x01\n" +
-	"\rRelatedEntity\x12+\n" +
-	"\brelation\x18\x01 \x01(\v2\x0f.model.RelationR\brelation\x12'\n" +
-	"\x06source\x18\x02 \x01(\v2\r.model.SourceH\x00R\x06source\x12'\n" +
-	"\x06person\x18\x03 \x01(\v2\r.model.PersonH\x00R\x06person\x129\n" +
-	"\forganization\x18\x04 \x01(\v2\x13.model.OrganizationH\x00R\forganization\x12*\n" +
-	"\awebsite\x18\x05 \x01(\v2\x0e.model.WebsiteH\x00R\awebsiteB\b\n" +
+	"\x16model/v1/related.proto\x12\bmodel.v1\x1a\x14model/v1/osint.proto\"\x8e\x02\n" +
+	"\rRelatedEntity\x12.\n" +
+	"\brelation\x18\x01 \x01(\v2\x12.model.v1.RelationR\brelation\x12*\n" +
+	"\x06source\x18\x02 \x01(\v2\x10.model.v1.SourceH\x00R\x06source\x12*\n" +
+	"\x06person\x18\x03 \x01(\v2\x10.model.v1.PersonH\x00R\x06person\x12<\n" +
+	"\forganization\x18\x04 \x01(\v2\x16.model.v1.OrganizationH\x00R\forganization\x12-\n" +
+	"\awebsite\x18\x05 \x01(\v2\x11.model.v1.WebsiteH\x00R\awebsiteB\b\n" +
 	"\x06entityB;Z9github.com/bouncingmaxt/omniscent-library/gen/model;modelb\x06proto3"
 
 var (
-	file_model_related_proto_rawDescOnce sync.Once
-	file_model_related_proto_rawDescData []byte
+	file_model_v1_related_proto_rawDescOnce sync.Once
+	file_model_v1_related_proto_rawDescData []byte
 )
 
-func file_model_related_proto_rawDescGZIP() []byte {
-	file_model_related_proto_rawDescOnce.Do(func() {
-		file_model_related_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_model_related_proto_rawDesc), len(file_model_related_proto_rawDesc)))
+func file_model_v1_related_proto_rawDescGZIP() []byte {
+	file_model_v1_related_proto_rawDescOnce.Do(func() {
+		file_model_v1_related_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_model_v1_related_proto_rawDesc), len(file_model_v1_related_proto_rawDesc)))
 	})
-	return file_model_related_proto_rawDescData
+	return file_model_v1_related_proto_rawDescData
 }
 
-var file_model_related_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_model_related_proto_goTypes = []any{
-	(*RelatedEntity)(nil), // 0: model.RelatedEntity
-	(*Relation)(nil),      // 1: model.Relation
-	(*Source)(nil),        // 2: model.Source
-	(*Person)(nil),        // 3: model.Person
-	(*Organization)(nil),  // 4: model.Organization
-	(*Website)(nil),       // 5: model.Website
+var file_model_v1_related_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_model_v1_related_proto_goTypes = []any{
+	(*RelatedEntity)(nil), // 0: model.v1.RelatedEntity
+	(*Relation)(nil),      // 1: model.v1.Relation
+	(*Source)(nil),        // 2: model.v1.Source
+	(*Person)(nil),        // 3: model.v1.Person
+	(*Organization)(nil),  // 4: model.v1.Organization
+	(*Website)(nil),       // 5: model.v1.Website
 }
-var file_model_related_proto_depIdxs = []int32{
-	1, // 0: model.RelatedEntity.relation:type_name -> model.Relation
-	2, // 1: model.RelatedEntity.source:type_name -> model.Source
-	3, // 2: model.RelatedEntity.person:type_name -> model.Person
-	4, // 3: model.RelatedEntity.organization:type_name -> model.Organization
-	5, // 4: model.RelatedEntity.website:type_name -> model.Website
+var file_model_v1_related_proto_depIdxs = []int32{
+	1, // 0: model.v1.RelatedEntity.relation:type_name -> model.v1.Relation
+	2, // 1: model.v1.RelatedEntity.source:type_name -> model.v1.Source
+	3, // 2: model.v1.RelatedEntity.person:type_name -> model.v1.Person
+	4, // 3: model.v1.RelatedEntity.organization:type_name -> model.v1.Organization
+	5, // 4: model.v1.RelatedEntity.website:type_name -> model.v1.Website
 	5, // [5:5] is the sub-list for method output_type
 	5, // [5:5] is the sub-list for method input_type
 	5, // [5:5] is the sub-list for extension type_name
@@ -190,14 +190,13 @@ var file_model_related_proto_depIdxs = []int32{
 	0, // [0:5] is the sub-list for field type_name
 }
 
-func init() { file_model_related_proto_init() }
-func file_model_related_proto_init() {
-	if File_model_related_proto != nil {
+func init() { file_model_v1_related_proto_init() }
+func file_model_v1_related_proto_init() {
+	if File_model_v1_related_proto != nil {
 		return
 	}
-	file_model_common_proto_init()
-	file_model_osint_proto_init()
-	file_model_related_proto_msgTypes[0].OneofWrappers = []any{
+	file_model_v1_osint_proto_init()
+	file_model_v1_related_proto_msgTypes[0].OneofWrappers = []any{
 		(*RelatedEntity_Source)(nil),
 		(*RelatedEntity_Person)(nil),
 		(*RelatedEntity_Organization)(nil),
@@ -207,17 +206,17 @@ func file_model_related_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_model_related_proto_rawDesc), len(file_model_related_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_model_v1_related_proto_rawDesc), len(file_model_v1_related_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_model_related_proto_goTypes,
-		DependencyIndexes: file_model_related_proto_depIdxs,
-		MessageInfos:      file_model_related_proto_msgTypes,
+		GoTypes:           file_model_v1_related_proto_goTypes,
+		DependencyIndexes: file_model_v1_related_proto_depIdxs,
+		MessageInfos:      file_model_v1_related_proto_msgTypes,
 	}.Build()
-	File_model_related_proto = out.File
-	file_model_related_proto_goTypes = nil
-	file_model_related_proto_depIdxs = nil
+	File_model_v1_related_proto = out.File
+	file_model_v1_related_proto_goTypes = nil
+	file_model_v1_related_proto_depIdxs = nil
 }

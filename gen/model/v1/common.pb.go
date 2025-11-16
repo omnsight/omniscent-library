@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        (unknown)
-// source: model/common.proto
+// source: model/v1/common.proto
 
 package model
 
@@ -38,7 +38,7 @@ type LocationData struct {
 
 func (x *LocationData) Reset() {
 	*x = LocationData{}
-	mi := &file_model_common_proto_msgTypes[0]
+	mi := &file_model_v1_common_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -50,7 +50,7 @@ func (x *LocationData) String() string {
 func (*LocationData) ProtoMessage() {}
 
 func (x *LocationData) ProtoReflect() protoreflect.Message {
-	mi := &file_model_common_proto_msgTypes[0]
+	mi := &file_model_v1_common_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -63,7 +63,7 @@ func (x *LocationData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LocationData.ProtoReflect.Descriptor instead.
 func (*LocationData) Descriptor() ([]byte, []int) {
-	return file_model_common_proto_rawDescGZIP(), []int{0}
+	return file_model_v1_common_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *LocationData) GetLatitude() float32 {
@@ -129,11 +129,11 @@ func (x *LocationData) GetPostalCode() int32 {
 	return 0
 }
 
-var File_model_common_proto protoreflect.FileDescriptor
+var File_model_v1_common_proto protoreflect.FileDescriptor
 
-const file_model_common_proto_rawDesc = "" +
+const file_model_v1_common_proto_rawDesc = "" +
 	"\n" +
-	"\x12model/common.proto\x12\x05model\"\xce\x02\n" +
+	"\x15model/v1/common.proto\x12\bmodel.v1\"\xce\x02\n" +
 	"\fLocationData\x12\x1a\n" +
 	"\blatitude\x18\x01 \x01(\x02R\blatitude\x12\x1c\n" +
 	"\tlongitude\x18\x02 \x01(\x02R\tlongitude\x12!\n" +
@@ -148,22 +148,22 @@ const file_model_common_proto_rawDesc = "" +
 	"postalCodeB;Z9github.com/bouncingmaxt/omniscent-library/gen/model;modelb\x06proto3"
 
 var (
-	file_model_common_proto_rawDescOnce sync.Once
-	file_model_common_proto_rawDescData []byte
+	file_model_v1_common_proto_rawDescOnce sync.Once
+	file_model_v1_common_proto_rawDescData []byte
 )
 
-func file_model_common_proto_rawDescGZIP() []byte {
-	file_model_common_proto_rawDescOnce.Do(func() {
-		file_model_common_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_model_common_proto_rawDesc), len(file_model_common_proto_rawDesc)))
+func file_model_v1_common_proto_rawDescGZIP() []byte {
+	file_model_v1_common_proto_rawDescOnce.Do(func() {
+		file_model_v1_common_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_model_v1_common_proto_rawDesc), len(file_model_v1_common_proto_rawDesc)))
 	})
-	return file_model_common_proto_rawDescData
+	return file_model_v1_common_proto_rawDescData
 }
 
-var file_model_common_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_model_common_proto_goTypes = []any{
-	(*LocationData)(nil), // 0: model.LocationData
+var file_model_v1_common_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_model_v1_common_proto_goTypes = []any{
+	(*LocationData)(nil), // 0: model.v1.LocationData
 }
-var file_model_common_proto_depIdxs = []int32{
+var file_model_v1_common_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -171,26 +171,26 @@ var file_model_common_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_model_common_proto_init() }
-func file_model_common_proto_init() {
-	if File_model_common_proto != nil {
+func init() { file_model_v1_common_proto_init() }
+func file_model_v1_common_proto_init() {
+	if File_model_v1_common_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_model_common_proto_rawDesc), len(file_model_common_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_model_v1_common_proto_rawDesc), len(file_model_v1_common_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_model_common_proto_goTypes,
-		DependencyIndexes: file_model_common_proto_depIdxs,
-		MessageInfos:      file_model_common_proto_msgTypes,
+		GoTypes:           file_model_v1_common_proto_goTypes,
+		DependencyIndexes: file_model_v1_common_proto_depIdxs,
+		MessageInfos:      file_model_v1_common_proto_msgTypes,
 	}.Build()
-	File_model_common_proto = out.File
-	file_model_common_proto_goTypes = nil
-	file_model_common_proto_depIdxs = nil
+	File_model_v1_common_proto = out.File
+	file_model_v1_common_proto_goTypes = nil
+	file_model_v1_common_proto_depIdxs = nil
 }

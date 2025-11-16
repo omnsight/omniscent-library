@@ -9,7 +9,12 @@ OmniLib hosts the data models and service definitions for all Omnisciens service
 buf registry login buf.build
 
 buf dep update
+
+buf format -w
+buf lint
+
 buf generate
+
 buf push
 
 go mod tidy
