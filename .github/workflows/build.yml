@@ -20,6 +20,8 @@ jobs:
       - name: Generate Protobuf code
         uses: bufbuild/buf-action@v1
         with:
+          format: true
+          lint: true
           push: false
 
       - name: Set up Go
