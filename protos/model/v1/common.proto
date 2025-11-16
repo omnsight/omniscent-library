@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package model.v1;
 
-option go_package = "github.com/bouncingmaxt/omniscent-library/gen/model/v1;model";
+option go_package = "github.com/omnsight/omniscent-library/gen/model/v1;model";
 
 message LocationData {
   float latitude = 1;
