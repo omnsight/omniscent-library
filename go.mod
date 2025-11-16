@@ -1,4 +1,4 @@
-module github.com/bouncingmaxt/omniscent-library
+module github.com/omnsight/omniscent-library
 
 go 1.25.3
 

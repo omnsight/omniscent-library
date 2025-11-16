@@ -2,6 +2,8 @@ github.com/arangodb/go-driver v1.6.9 h1:zckB+xuA16NmHUuYOX7INCJTIyIkoBQjAGqNpiyf
 github.com/arangodb/go-driver v1.6.9/go.mod h1:eAM/drVZw39hTGFdkxvbVv0uJsDGFaUpqQHVZMSoALc=
 github.com/arangodb/go-velocypack v0.0.0-20200318135517-5af53c29c67e h1:Xg+hGrY2LcQBbxd0ZFdbGSyRKTYMZCfBbw/pMJFOk1g=
 github.com/arangodb/go-velocypack v0.0.0-20200318135517-5af53c29c67e/go.mod h1:mq7Shfa/CaixoDxiyAAc5jZ6CVBAyPaNQCGS7mkj4Ho=
+github.com/bouncingmaxt/omniscent-library v1.2.0 h1:HZw/Od2tVmALShOxLQzpAb2490BDy/Ny+7ri+V2Zx50=
+github.com/bouncingmaxt/omniscent-library v1.2.0/go.mod h1:wK/1Tcl8pRY57Xkk1s+GfOGZGwueT8//It9SsJStIbU=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
