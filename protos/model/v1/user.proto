@@ -1,12 +1,12 @@
 syntax = "proto3";
 
-package model;
+package model.v1;
 
 option go_package = "github.com/bouncingmaxt/omniscent-library/gen/model;model";
 
 enum UserRole {
-    USER = 0;
-    ADMIN = 1;
+    USER_ROLE_USER_UNSPECIFIED = 0;
+    USER_ROLE_ADMIN = 1;
 }
 
 message User {

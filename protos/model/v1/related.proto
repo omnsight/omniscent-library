@@ -1,9 +1,8 @@
 syntax = "proto3";
 
-package model;
+package model.v1;
 
-import "model/common.proto";
-import "model/osint.proto";
+import "model/v1/osint.proto";
 
 option go_package = "github.com/bouncingmaxt/omniscent-library/gen/model;model";
 
