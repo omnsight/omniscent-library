@@ -1039,7 +1039,7 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	"founded_at\x18\x14 \x01(\x03R\tfoundedAt\x12#\n" +
 	"\rdiscovered_at\x18\x15 \x01(\x03R\fdiscoveredAt\x12!\n" +
 	"\flast_visited\x18\x16 \x01(\x03R\vlastVisited\x12\x12\n" +
-	"\x04tags\x18\x1e \x03(\tR\x04tagsB;Z9github.com/bouncingmaxt/omniscent-library/gen/model;modelb\x06proto3"
+	"\x04tags\x18\x1e \x03(\tR\x04tagsB:Z8github.com/omnsight/omniscent-library/gen/model/v1;modelb\x06proto3"
 
 var (
 	file_model_v1_osint_proto_rawDescOnce sync.Once
