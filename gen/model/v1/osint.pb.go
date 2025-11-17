@@ -25,15 +25,15 @@ type Relation struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
 	// @gotags: json:"_id,omitempty"
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// @gotags: json:"_key,omitempty"
-	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
 	// @gotags: json:"_from,omitempty"
-	From string `protobuf:"bytes,3,opt,name=from,proto3" json:"_from,omitempty"`
+	From string `protobuf:"bytes,3,opt,name=from,proto3" json:"from,omitempty"`
 	// @gotags: json:"_to,omitempty"
-	To string `protobuf:"bytes,4,opt,name=to,proto3" json:"_to,omitempty"`
+	To string `protobuf:"bytes,4,opt,name=to,proto3" json:"to,omitempty"`
 	// @gotags: json:"_rev,omitempty"
-	Rev string `protobuf:"bytes,5,opt,name=rev,proto3" json:"_rev,omitempty"`
+	Rev string `protobuf:"bytes,5,opt,name=rev,proto3" json:"rev,omitempty"`
 	// Main Data
 	Name       string                     `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
 	Confidence int32                      `protobuf:"varint,11,opt,name=confidence,proto3" json:"confidence,omitempty"`
@@ -149,11 +149,11 @@ type Event struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
 	// @gotags: json:"_id,omitempty"
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// @gotags: json:"_key,omitempty"
-	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
 	// @gotags: json:"_rev,omitempty"
-	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
+	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"rev,omitempty"`
 	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
 	// Main Data
 	Location    *LocationData `protobuf:"bytes,10,opt,name=location,proto3" json:"location,omitempty"`
@@ -272,11 +272,11 @@ type Source struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
 	// @gotags: json:"_id,omitempty"
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// @gotags: json:"_key,omitempty"
-	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
 	// @gotags: json:"_rev,omitempty"
-	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
+	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"rev,omitempty"`
 	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
 	// Main Data
 	Name        string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
@@ -411,11 +411,11 @@ type Person struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
 	// @gotags: json:"_id,omitempty"
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// @gotags: json:"_key,omitempty"
-	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
 	// @gotags: json:"_rev,omitempty"
-	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
+	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"rev,omitempty"`
 	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
 	// Main Data
 	Name        string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
@@ -542,11 +542,11 @@ type Organization struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
 	// @gotags: json:"_id,omitempty"
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// @gotags: json:"_key,omitempty"
-	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
 	// @gotags: json:"_rev,omitempty"
-	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
+	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"rev,omitempty"`
 	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
 	// Main Data
 	Name string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
@@ -665,11 +665,11 @@ type Website struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Common data
 	// @gotags: json:"_id,omitempty"
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"_id,omitempty"`
+	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	// @gotags: json:"_key,omitempty"
-	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
+	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"key,omitempty"`
 	// @gotags: json:"_rev,omitempty"
-	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
+	Rev     string `protobuf:"bytes,3,opt,name=rev,proto3" json:"rev,omitempty"`
 	Visible bool   `protobuf:"varint,4,opt,name=visible,proto3" json:"visible,omitempty"`
 	// Main Data
 	Url         string `protobuf:"bytes,10,opt,name=url,proto3" json:"url,omitempty"`
@@ -1039,7 +1039,7 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	"founded_at\x18\x14 \x01(\x03R\tfoundedAt\x12#\n" +
 	"\rdiscovered_at\x18\x15 \x01(\x03R\fdiscoveredAt\x12!\n" +
 	"\flast_visited\x18\x16 \x01(\x03R\vlastVisited\x12\x12\n" +
-	"\x04tags\x18\x1e \x03(\tR\x04tagsB;Z9github.com/bouncingmaxt/omniscent-library/gen/model;modelb\x06proto3"
+	"\x04tags\x18\x1e \x03(\tR\x04tagsB:Z8github.com/omnsight/omniscent-library/gen/model/v1;modelb\x06proto3"
 
 var (
 	file_model_v1_osint_proto_rawDescOnce sync.Once

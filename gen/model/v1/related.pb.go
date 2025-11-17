@@ -154,7 +154,7 @@ const file_model_v1_related_proto_rawDesc = "" +
 	"\x06person\x18\x03 \x01(\v2\x10.model.v1.PersonH\x00R\x06person\x12<\n" +
 	"\forganization\x18\x04 \x01(\v2\x16.model.v1.OrganizationH\x00R\forganization\x12-\n" +
 	"\awebsite\x18\x05 \x01(\v2\x11.model.v1.WebsiteH\x00R\awebsiteB\b\n" +
-	"\x06entityB;Z9github.com/bouncingmaxt/omniscent-library/gen/model;modelb\x06proto3"
+	"\x06entityB:Z8github.com/omnsight/omniscent-library/gen/model/v1;modelb\x06proto3"
 
 var (
 	file_model_v1_related_proto_rawDescOnce sync.Once

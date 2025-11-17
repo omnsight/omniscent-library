@@ -145,7 +145,7 @@ const file_model_v1_common_proto_rawDesc = "" +
 	"\aaddress\x18\t \x01(\tR\aaddress\x12\x1f\n" +
 	"\vpostal_code\x18\n" +
 	" \x01(\x05R\n" +
-	"postalCodeB;Z9github.com/bouncingmaxt/omniscent-library/gen/model;modelb\x06proto3"
+	"postalCodeB:Z8github.com/omnsight/omniscent-library/gen/model/v1;modelb\x06proto3"
 
 var (
 	file_model_v1_common_proto_rawDescOnce sync.Once
