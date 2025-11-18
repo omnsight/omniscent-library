@@ -1,6 +1,6 @@
 # OmniLib
 
-placeholder
+Omnilib hosts the common data model for Omniscense micro-services.
 
 ## Local Development
 
