@@ -1,14 +1,12 @@
-name: Generate Proto Code & Commit
+name: Build & Commit To Downstream
 
 on:
   push:
-    branches:
-      - '**'
-      - '!main'
-      - '!pre-release'
+    branches-ignore:
+      - 'main'
 
 jobs:
-  generate-proto:
+  build:
     runs-on: ubuntu-latest
 
     permissions:
