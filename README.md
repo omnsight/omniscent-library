@@ -1,8 +1,14 @@
 # OmniLib
 
-OmniLib hosts the data models and service definitions for all Omnisciens services, defining the contracts between services and the data models for backend services and ArangoDB. Protobuf files are published to https://buf.build/omnsight/omnlib.
+placeholder
 
 ## Local Development
+
+Tag is injested by a github action. Commit message including `#major`, `#minor`, `#patch`, or `#none` will bump the release and pre-release versions.
+
+### Dependencies
+
+Buf build:
 
 ```bash
 # Generate Go bindings for GeoVision services
@@ -19,7 +25,3 @@ buf push
 
 go mod tidy
 ```
-
-## Development Guide
-
-Tagging is automatically done by the github action. Commit message including `#major`, `#minor`, `#patch`, or `#none` in the branches `main` and `pre-release` will bump the release and pre-release versions.
