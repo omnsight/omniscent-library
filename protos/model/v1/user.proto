@@ -9,32 +9,29 @@ enum UserRole {
   USER_ROLE_ADMIN = 1;
 }
 
-message User {
-  // basic info
+message UserPrivate {
   string id = 1;
   string username = 2;
-  string bio = 3;
-  string avatar_url = 4;
-  // time data
-  int64 created_at = 10;
-  int64 updated_at = 11;
-  // special
-  UserRole role = 15;
+  bool enabled = 3;
+  string first_name = 4;
+  string last_name = 5;
+  string email = 6;
+  bool email_verified = 7;
+  map<string, string> attributes = 8;
+  int64 created_timestamp = 9;
+  bool totp = 10;
+  bool disableable_credential_types = 11;
+  repeated string realm_roles = 12;
+  repeated string client_roles = 13;
 }
 
-enum CredentialProvider {
-  CREDENTIAL_PROVIDER_LOCAL_UNSPECIFIED = 0;
-  CREDENTIAL_PROVIDER_PHONE = 1;
-  CREDENTIAL_PROVIDER_EMAIL = 2;
-  CREDENTIAL_PROVIDER_WECHAT = 3;
-}
-
-message Credential {
-  string user_id = 1;
-  CredentialProvider provider = 2;
-  string identifier = 3; // 如: phone="13800138000", email="a@b.com", wechat_openid="xxx"
-  string secret = 4; // 密码哈希 / token 等（仅 local/email/phone 用）
-  bool verified = 5; // 是否已验证（邮箱/手机）
-  // time data
-  int64 created_at = 10;
+message User {
+  string id = 1;
+  string username = 2;
+  string first_name = 3;
+  string last_name = 4;
+  string bio = 5;
+  string avatar_url = 6;
+  string birthday = 7;
+  string location = 8;
 }

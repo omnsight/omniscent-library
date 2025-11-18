@@ -67,77 +67,163 @@ func (UserRole) EnumDescriptor() ([]byte, []int) {
 	return file_model_v1_user_proto_rawDescGZIP(), []int{0}
 }
 
-type CredentialProvider int32
+type UserPrivate struct {
+	state                      protoimpl.MessageState `protogen:"open.v1"`
+	Id                         string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Username                   string                 `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
+	Enabled                    bool                   `protobuf:"varint,3,opt,name=enabled,proto3" json:"enabled,omitempty"`
+	FirstName                  string                 `protobuf:"bytes,4,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName                   string                 `protobuf:"bytes,5,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	Email                      string                 `protobuf:"bytes,6,opt,name=email,proto3" json:"email,omitempty"`
+	EmailVerified              bool                   `protobuf:"varint,7,opt,name=email_verified,json=emailVerified,proto3" json:"email_verified,omitempty"`
+	Attributes                 map[string]string      `protobuf:"bytes,8,rep,name=attributes,proto3" json:"attributes,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	CreatedTimestamp           int64                  `protobuf:"varint,9,opt,name=created_timestamp,json=createdTimestamp,proto3" json:"created_timestamp,omitempty"`
+	Totp                       bool                   `protobuf:"varint,10,opt,name=totp,proto3" json:"totp,omitempty"`
+	DisableableCredentialTypes bool                   `protobuf:"varint,11,opt,name=disableable_credential_types,json=disableableCredentialTypes,proto3" json:"disableable_credential_types,omitempty"`
+	RealmRoles                 []string               `protobuf:"bytes,12,rep,name=realm_roles,json=realmRoles,proto3" json:"realm_roles,omitempty"`
+	ClientRoles                []string               `protobuf:"bytes,13,rep,name=client_roles,json=clientRoles,proto3" json:"client_roles,omitempty"`
+	unknownFields              protoimpl.UnknownFields
+	sizeCache                  protoimpl.SizeCache
+}
 
-const (
-	CredentialProvider_CREDENTIAL_PROVIDER_LOCAL_UNSPECIFIED CredentialProvider = 0
-	CredentialProvider_CREDENTIAL_PROVIDER_PHONE             CredentialProvider = 1
-	CredentialProvider_CREDENTIAL_PROVIDER_EMAIL             CredentialProvider = 2
-	CredentialProvider_CREDENTIAL_PROVIDER_WECHAT            CredentialProvider = 3
-)
+func (x *UserPrivate) Reset() {
+	*x = UserPrivate{}
+	mi := &file_model_v1_user_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
 
-// Enum value maps for CredentialProvider.
-var (
-	CredentialProvider_name = map[int32]string{
-		0: "CREDENTIAL_PROVIDER_LOCAL_UNSPECIFIED",
-		1: "CREDENTIAL_PROVIDER_PHONE",
-		2: "CREDENTIAL_PROVIDER_EMAIL",
-		3: "CREDENTIAL_PROVIDER_WECHAT",
+func (x *UserPrivate) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UserPrivate) ProtoMessage() {}
+
+func (x *UserPrivate) ProtoReflect() protoreflect.Message {
+	mi := &file_model_v1_user_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
 	}
-	CredentialProvider_value = map[string]int32{
-		"CREDENTIAL_PROVIDER_LOCAL_UNSPECIFIED": 0,
-		"CREDENTIAL_PROVIDER_PHONE":             1,
-		"CREDENTIAL_PROVIDER_EMAIL":             2,
-		"CREDENTIAL_PROVIDER_WECHAT":            3,
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UserPrivate.ProtoReflect.Descriptor instead.
+func (*UserPrivate) Descriptor() ([]byte, []int) {
+	return file_model_v1_user_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *UserPrivate) GetId() string {
+	if x != nil {
+		return x.Id
 	}
-)
-
-func (x CredentialProvider) Enum() *CredentialProvider {
-	p := new(CredentialProvider)
-	*p = x
-	return p
+	return ""
 }
 
-func (x CredentialProvider) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+func (x *UserPrivate) GetUsername() string {
+	if x != nil {
+		return x.Username
+	}
+	return ""
 }
 
-func (CredentialProvider) Descriptor() protoreflect.EnumDescriptor {
-	return file_model_v1_user_proto_enumTypes[1].Descriptor()
+func (x *UserPrivate) GetEnabled() bool {
+	if x != nil {
+		return x.Enabled
+	}
+	return false
 }
 
-func (CredentialProvider) Type() protoreflect.EnumType {
-	return &file_model_v1_user_proto_enumTypes[1]
+func (x *UserPrivate) GetFirstName() string {
+	if x != nil {
+		return x.FirstName
+	}
+	return ""
 }
 
-func (x CredentialProvider) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
+func (x *UserPrivate) GetLastName() string {
+	if x != nil {
+		return x.LastName
+	}
+	return ""
 }
 
-// Deprecated: Use CredentialProvider.Descriptor instead.
-func (CredentialProvider) EnumDescriptor() ([]byte, []int) {
-	return file_model_v1_user_proto_rawDescGZIP(), []int{1}
+func (x *UserPrivate) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *UserPrivate) GetEmailVerified() bool {
+	if x != nil {
+		return x.EmailVerified
+	}
+	return false
+}
+
+func (x *UserPrivate) GetAttributes() map[string]string {
+	if x != nil {
+		return x.Attributes
+	}
+	return nil
+}
+
+func (x *UserPrivate) GetCreatedTimestamp() int64 {
+	if x != nil {
+		return x.CreatedTimestamp
+	}
+	return 0
+}
+
+func (x *UserPrivate) GetTotp() bool {
+	if x != nil {
+		return x.Totp
+	}
+	return false
+}
+
+func (x *UserPrivate) GetDisableableCredentialTypes() bool {
+	if x != nil {
+		return x.DisableableCredentialTypes
+	}
+	return false
+}
+
+func (x *UserPrivate) GetRealmRoles() []string {
+	if x != nil {
+		return x.RealmRoles
+	}
+	return nil
+}
+
+func (x *UserPrivate) GetClientRoles() []string {
+	if x != nil {
+		return x.ClientRoles
+	}
+	return nil
 }
 
 type User struct {
-	state protoimpl.MessageState `protogen:"open.v1"`
-	// basic info
-	Id        string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Username  string `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
-	Bio       string `protobuf:"bytes,3,opt,name=bio,proto3" json:"bio,omitempty"`
-	AvatarUrl string `protobuf:"bytes,4,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
-	// time data
-	CreatedAt int64 `protobuf:"varint,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	UpdatedAt int64 `protobuf:"varint,11,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
-	// special
-	Role          UserRole `protobuf:"varint,15,opt,name=role,proto3,enum=model.v1.UserRole" json:"role,omitempty"`
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Username      string                 `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
+	FirstName     string                 `protobuf:"bytes,3,opt,name=first_name,json=firstName,proto3" json:"first_name,omitempty"`
+	LastName      string                 `protobuf:"bytes,4,opt,name=last_name,json=lastName,proto3" json:"last_name,omitempty"`
+	Bio           string                 `protobuf:"bytes,5,opt,name=bio,proto3" json:"bio,omitempty"`
+	AvatarUrl     string                 `protobuf:"bytes,6,opt,name=avatar_url,json=avatarUrl,proto3" json:"avatar_url,omitempty"`
+	Birthday      string                 `protobuf:"bytes,7,opt,name=birthday,proto3" json:"birthday,omitempty"`
+	Location      string                 `protobuf:"bytes,8,opt,name=location,proto3" json:"location,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *User) Reset() {
 	*x = User{}
-	mi := &file_model_v1_user_proto_msgTypes[0]
+	mi := &file_model_v1_user_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -149,7 +235,7 @@ func (x *User) String() string {
 func (*User) ProtoMessage() {}
 
 func (x *User) ProtoReflect() protoreflect.Message {
-	mi := &file_model_v1_user_proto_msgTypes[0]
+	mi := &file_model_v1_user_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -162,7 +248,7 @@ func (x *User) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use User.ProtoReflect.Descriptor instead.
 func (*User) Descriptor() ([]byte, []int) {
-	return file_model_v1_user_proto_rawDescGZIP(), []int{0}
+	return file_model_v1_user_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *User) GetId() string {
@@ -175,6 +261,20 @@ func (x *User) GetId() string {
 func (x *User) GetUsername() string {
 	if x != nil {
 		return x.Username
+	}
+	return ""
+}
+
+func (x *User) GetFirstName() string {
+	if x != nil {
+		return x.FirstName
+	}
+	return ""
+}
+
+func (x *User) GetLastName() string {
+	if x != nil {
+		return x.LastName
 	}
 	return ""
 }
@@ -193,149 +293,61 @@ func (x *User) GetAvatarUrl() string {
 	return ""
 }
 
-func (x *User) GetCreatedAt() int64 {
+func (x *User) GetBirthday() string {
 	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *User) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
-
-func (x *User) GetRole() UserRole {
-	if x != nil {
-		return x.Role
-	}
-	return UserRole_USER_ROLE_USER_UNSPECIFIED
-}
-
-type Credential struct {
-	state      protoimpl.MessageState `protogen:"open.v1"`
-	UserId     string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Provider   CredentialProvider     `protobuf:"varint,2,opt,name=provider,proto3,enum=model.v1.CredentialProvider" json:"provider,omitempty"`
-	Identifier string                 `protobuf:"bytes,3,opt,name=identifier,proto3" json:"identifier,omitempty"` // 如: phone="13800138000", email="a@b.com", wechat_openid="xxx"
-	Secret     string                 `protobuf:"bytes,4,opt,name=secret,proto3" json:"secret,omitempty"`         // 密码哈希 / token 等（仅 local/email/phone 用）
-	Verified   bool                   `protobuf:"varint,5,opt,name=verified,proto3" json:"verified,omitempty"`    // 是否已验证（邮箱/手机）
-	// time data
-	CreatedAt     int64 `protobuf:"varint,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Credential) Reset() {
-	*x = Credential{}
-	mi := &file_model_v1_user_proto_msgTypes[1]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Credential) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Credential) ProtoMessage() {}
-
-func (x *Credential) ProtoReflect() protoreflect.Message {
-	mi := &file_model_v1_user_proto_msgTypes[1]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Credential.ProtoReflect.Descriptor instead.
-func (*Credential) Descriptor() ([]byte, []int) {
-	return file_model_v1_user_proto_rawDescGZIP(), []int{1}
-}
-
-func (x *Credential) GetUserId() string {
-	if x != nil {
-		return x.UserId
+		return x.Birthday
 	}
 	return ""
 }
 
-func (x *Credential) GetProvider() CredentialProvider {
+func (x *User) GetLocation() string {
 	if x != nil {
-		return x.Provider
-	}
-	return CredentialProvider_CREDENTIAL_PROVIDER_LOCAL_UNSPECIFIED
-}
-
-func (x *Credential) GetIdentifier() string {
-	if x != nil {
-		return x.Identifier
+		return x.Location
 	}
 	return ""
-}
-
-func (x *Credential) GetSecret() string {
-	if x != nil {
-		return x.Secret
-	}
-	return ""
-}
-
-func (x *Credential) GetVerified() bool {
-	if x != nil {
-		return x.Verified
-	}
-	return false
-}
-
-func (x *Credential) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
 }
 
 var File_model_v1_user_proto protoreflect.FileDescriptor
 
 const file_model_v1_user_proto_rawDesc = "" +
 	"\n" +
-	"\x13model/v1/user.proto\x12\bmodel.v1\"\xc9\x01\n" +
+	"\x13model/v1/user.proto\x12\bmodel.v1\"\x99\x04\n" +
+	"\vUserPrivate\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1a\n" +
+	"\busername\x18\x02 \x01(\tR\busername\x12\x18\n" +
+	"\aenabled\x18\x03 \x01(\bR\aenabled\x12\x1d\n" +
+	"\n" +
+	"first_name\x18\x04 \x01(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\x05 \x01(\tR\blastName\x12\x14\n" +
+	"\x05email\x18\x06 \x01(\tR\x05email\x12%\n" +
+	"\x0eemail_verified\x18\a \x01(\bR\remailVerified\x12E\n" +
+	"\n" +
+	"attributes\x18\b \x03(\v2%.model.v1.UserPrivate.AttributesEntryR\n" +
+	"attributes\x12+\n" +
+	"\x11created_timestamp\x18\t \x01(\x03R\x10createdTimestamp\x12\x12\n" +
+	"\x04totp\x18\n" +
+	" \x01(\bR\x04totp\x12@\n" +
+	"\x1cdisableable_credential_types\x18\v \x01(\bR\x1adisableableCredentialTypes\x12\x1f\n" +
+	"\vrealm_roles\x18\f \x03(\tR\n" +
+	"realmRoles\x12!\n" +
+	"\fclient_roles\x18\r \x03(\tR\vclientRoles\x1a=\n" +
+	"\x0fAttributesEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xd7\x01\n" +
 	"\x04User\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1a\n" +
-	"\busername\x18\x02 \x01(\tR\busername\x12\x10\n" +
-	"\x03bio\x18\x03 \x01(\tR\x03bio\x12\x1d\n" +
+	"\busername\x18\x02 \x01(\tR\busername\x12\x1d\n" +
 	"\n" +
-	"avatar_url\x18\x04 \x01(\tR\tavatarUrl\x12\x1d\n" +
+	"first_name\x18\x03 \x01(\tR\tfirstName\x12\x1b\n" +
+	"\tlast_name\x18\x04 \x01(\tR\blastName\x12\x10\n" +
+	"\x03bio\x18\x05 \x01(\tR\x03bio\x12\x1d\n" +
 	"\n" +
-	"created_at\x18\n" +
-	" \x01(\x03R\tcreatedAt\x12\x1d\n" +
-	"\n" +
-	"updated_at\x18\v \x01(\x03R\tupdatedAt\x12&\n" +
-	"\x04role\x18\x0f \x01(\x0e2\x12.model.v1.UserRoleR\x04role\"\xd2\x01\n" +
-	"\n" +
-	"Credential\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\tR\x06userId\x128\n" +
-	"\bprovider\x18\x02 \x01(\x0e2\x1c.model.v1.CredentialProviderR\bprovider\x12\x1e\n" +
-	"\n" +
-	"identifier\x18\x03 \x01(\tR\n" +
-	"identifier\x12\x16\n" +
-	"\x06secret\x18\x04 \x01(\tR\x06secret\x12\x1a\n" +
-	"\bverified\x18\x05 \x01(\bR\bverified\x12\x1d\n" +
-	"\n" +
-	"created_at\x18\n" +
-	" \x01(\x03R\tcreatedAt*?\n" +
+	"avatar_url\x18\x06 \x01(\tR\tavatarUrl\x12\x1a\n" +
+	"\bbirthday\x18\a \x01(\tR\bbirthday\x12\x1a\n" +
+	"\blocation\x18\b \x01(\tR\blocation*?\n" +
 	"\bUserRole\x12\x1e\n" +
 	"\x1aUSER_ROLE_USER_UNSPECIFIED\x10\x00\x12\x13\n" +
-	"\x0fUSER_ROLE_ADMIN\x10\x01*\x9d\x01\n" +
-	"\x12CredentialProvider\x12)\n" +
-	"%CREDENTIAL_PROVIDER_LOCAL_UNSPECIFIED\x10\x00\x12\x1d\n" +
-	"\x19CREDENTIAL_PROVIDER_PHONE\x10\x01\x12\x1d\n" +
-	"\x19CREDENTIAL_PROVIDER_EMAIL\x10\x02\x12\x1e\n" +
-	"\x1aCREDENTIAL_PROVIDER_WECHAT\x10\x03B:Z8github.com/omnsight/omniscent-library/gen/model/v1;modelb\x06proto3"
+	"\x0fUSER_ROLE_ADMIN\x10\x01B:Z8github.com/omnsight/omniscent-library/gen/model/v1;modelb\x06proto3"
 
 var (
 	file_model_v1_user_proto_rawDescOnce sync.Once
@@ -349,22 +361,21 @@ func file_model_v1_user_proto_rawDescGZIP() []byte {
 	return file_model_v1_user_proto_rawDescData
 }
 
-var file_model_v1_user_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_model_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_model_v1_user_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_model_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_model_v1_user_proto_goTypes = []any{
-	(UserRole)(0),           // 0: model.v1.UserRole
-	(CredentialProvider)(0), // 1: model.v1.CredentialProvider
-	(*User)(nil),            // 2: model.v1.User
-	(*Credential)(nil),      // 3: model.v1.Credential
+	(UserRole)(0),       // 0: model.v1.UserRole
+	(*UserPrivate)(nil), // 1: model.v1.UserPrivate
+	(*User)(nil),        // 2: model.v1.User
+	nil,                 // 3: model.v1.UserPrivate.AttributesEntry
 }
 var file_model_v1_user_proto_depIdxs = []int32{
-	0, // 0: model.v1.User.role:type_name -> model.v1.UserRole
-	1, // 1: model.v1.Credential.provider:type_name -> model.v1.CredentialProvider
-	2, // [2:2] is the sub-list for method output_type
-	2, // [2:2] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	3, // 0: model.v1.UserPrivate.attributes:type_name -> model.v1.UserPrivate.AttributesEntry
+	1, // [1:1] is the sub-list for method output_type
+	1, // [1:1] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_model_v1_user_proto_init() }
@@ -377,8 +388,8 @@ func file_model_v1_user_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_model_v1_user_proto_rawDesc), len(file_model_v1_user_proto_rawDesc)),
-			NumEnums:      2,
-			NumMessages:   2,
+			NumEnums:      1,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
