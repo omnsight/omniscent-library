@@ -1,5 +1,5 @@
 // jwt_middleware.go
-package auth
+package middleware
 
 import (
 	"context"
