@@ -5,6 +5,9 @@ import (
 	"context"
 	"strings"
 
+	"net/http"
+
+	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
@@ -20,7 +23,7 @@ const (
 )
 
 // IdentityInterceptor parses claims without verifying signature (Gateway trusted)
-func IdentityInterceptor(clientID string) grpc.UnaryServerInterceptor {
+func GrpcGatewayIdentityInterceptor(clientID string) grpc.UnaryServerInterceptor {
 	return func(
 		ctx context.Context,
 		req interface{},
@@ -73,5 +76,54 @@ func IdentityInterceptor(clientID string) grpc.UnaryServerInterceptor {
 		ctx = context.WithValue(ctx, UserRolesKey, roles)
 
 		return handler(ctx, req)
+	}
+}
+
+func AuthMiddleware(clientID string) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		authHeader := c.GetHeader("Authorization")
+		if authHeader == "" {
+			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{"error": "missing authorization header"})
+			return
+		}
+
+		tokenString := strings.TrimPrefix(authHeader, "Bearer ")
+
+		// 1. Parse Unverified (Trusting the Gateway has already verified signature)
+		parser := jwt.NewParser()
+		token, _, err := parser.ParseUnverified(tokenString, jwt.MapClaims{})
+		if err != nil {
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": "failed to parse token"})
+			return
+		}
+
+		claims, ok := token.Claims.(jwt.MapClaims)
+		if !ok {
+			c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{"error": "invalid token claims"})
+			return
+		}
+
+		// 2. Extract User ID (Subject)
+		userID, _ := claims["sub"].(string)
+
+		// 3. Extract Client Roles for THIS specific client
+		var roles []string
+		if resAccess, ok := claims["resource_access"].(map[string]interface{}); ok {
+			if clientMap, ok := resAccess[clientID].(map[string]interface{}); ok {
+				if roleList, ok := clientMap["roles"].([]interface{}); ok {
+					for _, r := range roleList {
+						if rStr, ok := r.(string); ok {
+							roles = append(roles, rStr)
+						}
+					}
+				}
+			}
+		}
+
+		// 4. Inject into Context for downstream handlers
+		c.Set("userID", userID)
+		c.Set("userRoles", roles)
+
+		c.Next()
 	}
 }
