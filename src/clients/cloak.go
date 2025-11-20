@@ -8,6 +8,15 @@ import (
 	"github.com/Nerzal/gocloak/v13"
 )
 
+// PublicUserData 表示公开的用户信息
+type PublicUserData struct {
+	ID        string `json:"id"`
+	Username  string `json:"username"`
+	FirstName string `json:"firstName"`
+	LastName  string `json:"lastName"`
+	Email     string `json:"email"`
+}
+
 type CloakHelper struct {
 	Client       *gocloak.GoCloak
 	Realm        string
@@ -62,20 +71,22 @@ func (s *CloakHelper) GetUserProfile(ctx context.Context, targetUserID string) (
 	return user, nil
 }
 
-func (s *CloakHelper) GetPublicUserData(ctx context.Context, targetUserID string) (map[string]interface{}, error) {
+func (s *CloakHelper) GetPublicUserData(ctx context.Context, targetUserID string) (*PublicUserData, error) {
 	user, err := s.GetUserProfile(ctx, targetUserID)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get user %s: %w", targetUserID, err)
 	}
 
 	// 3. Filter and return safe public data
-	return map[string]interface{}{
-		"id":        safeStr(user.ID),
-		"username":  safeStr(user.Username),
-		"firstName": safeStr(user.FirstName),
-		"lastName":  safeStr(user.LastName),
-		"email":     safeStr(user.Email),
-	}, nil
+	publicData := &PublicUserData{
+		ID:        safeStr(user.ID),
+		Username:  safeStr(user.Username),
+		FirstName: safeStr(user.FirstName),
+		LastName:  safeStr(user.LastName),
+		Email:     safeStr(user.Email),
+	}
+
+	return publicData, nil
 }
 
 // Helper to safely dereference string pointers
