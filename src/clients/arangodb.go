@@ -11,6 +11,14 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// ArangoDB 环境变量键常量
+const (
+	ArangoURL      = "ARANGO_URL"
+	ArangoDB       = "ARANGO_DB"
+	ArangoUsername = "ARANGO_USERNAME"
+	ArangoPassword = "ARANGO_PASSWORD"
+)
+
 // ArangoDBClient represents a connection to ArangoDB
 type ArangoDBClient struct {
 	Client     driver.Client
@@ -21,22 +29,22 @@ type ArangoDBClient struct {
 // NewArangoDBClient creates a new ArangoDB client and connects to the database
 func NewArangoDBClient() (*ArangoDBClient, error) {
 	// Get ArangoDB connection details from environment variables
-	arangoDBURL := os.Getenv("ARANGO_URL")
+	arangoDBURL := os.Getenv(ArangoURL)
 	if arangoDBURL == "" {
 		logrus.Fatal("missing environment variable ARANGO_URL")
 	}
 
-	databaseName := os.Getenv("ARANGO_DB")
+	databaseName := os.Getenv(ArangoDB)
 	if databaseName == "" {
 		logrus.Fatal("missing environment variable ARANGO_DB")
 	}
 
-	username := os.Getenv("ARANGO_USERNAME")
+	username := os.Getenv(ArangoUsername)
 	if username == "" {
 		logrus.Fatal("missing environment variable ARANGO_USERNAME")
 	}
 
-	password := os.Getenv("ARANGO_PASSWORD")
+	password := os.Getenv(ArangoPassword)
 	if password == "" {
 		logrus.Fatal("missing environment variable ARANGO_PASSWORD")
 	}
