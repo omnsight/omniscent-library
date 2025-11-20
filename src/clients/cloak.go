@@ -1,8 +1,9 @@
-package helpers
+package clients
 
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"github.com/Nerzal/gocloak/v13"
 )
@@ -14,7 +15,27 @@ type CloakHelper struct {
 	ClientSecret string
 }
 
-func NewCloakHelper(url, realm, clientID, secret string) *CloakHelper {
+func NewCloakHelper() *CloakHelper {
+	url := os.Getenv("KEYCLOAK_URL")
+	if url == "" {
+		panic("KEYCLOAK_URL environment variable is not set")
+	}
+
+	realm := os.Getenv("KEYCLOAK_REALM")
+	if realm == "" {
+		panic("KEYCLOAK_REALM environment variable is not set")
+	}
+
+	clientID := os.Getenv("KEYCLOAK_CLIENT_ID")
+	if clientID == "" {
+		panic("KEYCLOAK_CLIENT_ID environment variable is not set")
+	}
+
+	secret := os.Getenv("KEYCLOAK_CLIENT_SECRET")
+	if secret == "" {
+		panic("KEYCLOAK_CLIENT_SECRET environment variable is not set")
+	}
+
 	return &CloakHelper{
 		Client:       gocloak.NewClient(url),
 		Realm:        realm,
