@@ -17,6 +17,14 @@ type PublicUserData struct {
 	Email     string `json:"email"`
 }
 
+// Keycloak 环境变量键常量
+const (
+	KeycloakURL          = "KEYCLOAK_URL"
+	KeycloakRealm        = "KEYCLOAK_REALM"
+	KeycloakClientID     = "KEYCLOAK_CLIENT_ID"
+	KeycloakClientSecret = "KEYCLOAK_CLIENT_SECRET"
+)
+
 type CloakHelper struct {
 	Client       *gocloak.GoCloak
 	Realm        string
@@ -25,22 +33,22 @@ type CloakHelper struct {
 }
 
 func NewCloakHelper() *CloakHelper {
-	url := os.Getenv("KEYCLOAK_URL")
+	url := os.Getenv(KeycloakURL)
 	if url == "" {
 		panic("KEYCLOAK_URL environment variable is not set")
 	}
 
-	realm := os.Getenv("KEYCLOAK_REALM")
+	realm := os.Getenv(KeycloakRealm)
 	if realm == "" {
 		panic("KEYCLOAK_REALM environment variable is not set")
 	}
 
-	clientID := os.Getenv("KEYCLOAK_CLIENT_ID")
+	clientID := os.Getenv(KeycloakClientID)
 	if clientID == "" {
 		panic("KEYCLOAK_CLIENT_ID environment variable is not set")
 	}
 
-	secret := os.Getenv("KEYCLOAK_CLIENT_SECRET")
+	secret := os.Getenv(KeycloakClientSecret)
 	if secret == "" {
 		panic("KEYCLOAK_CLIENT_SECRET environment variable is not set")
 	}
