@@ -15,3 +15,10 @@ message LocationData {
   string address = 9;
   int32 postal_code = 10;
 }
+
+enum Sensitivity {
+  SENSITIVITY_PUBLIC_UNSPECIFIED = 0;
+  SENSITIVITY_PRIVILEGED = 1;
+  SENSITIVITY_COMMERCIAL = 2;
+  SENSITIVITY_CONFIDENTIAL = 3;
+}

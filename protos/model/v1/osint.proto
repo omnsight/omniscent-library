@@ -18,6 +18,7 @@ message Relation {
   string to = 4;
   // @gotags: json:"_rev,omitempty"
   string rev = 5;
+  Sensitivity sensitivity = 6;
   // Main Data
   string name = 10;
   int32 confidence = 11;
@@ -45,7 +46,7 @@ message Event {
   string key = 2;
   // @gotags: json:"_rev,omitempty"
   string rev = 3;
-  bool visible = 4;
+  Sensitivity sensitivity = 4;
   // Main Data
   LocationData location = 10;
   string title = 11;
@@ -65,7 +66,7 @@ message Source {
   string key = 2;
   // @gotags: json:"_rev,omitempty"
   string rev = 3;
-  bool visible = 4;
+  Sensitivity sensitivity = 4;
   // Main Data
   string name = 10;
   string url = 11;
@@ -87,7 +88,7 @@ message Person {
   string key = 2;
   // @gotags: json:"_rev,omitempty"
   string rev = 3;
-  bool visible = 4;
+  Sensitivity sensitivity = 4;
   // Main Data
   string name = 10;
   string role = 11;
@@ -108,7 +109,7 @@ message Organization {
   string key = 2;
   // @gotags: json:"_rev,omitempty"
   string rev = 3;
-  bool visible = 4;
+  Sensitivity sensitivity = 4;
   // Main Data
   string name = 10;
   string type = 11;
@@ -128,7 +129,7 @@ message Website {
   string key = 2;
   // @gotags: json:"_rev,omitempty"
   string rev = 3;
-  bool visible = 4;
+  Sensitivity sensitivity = 4;
   // Main Data
   string url = 10;
   string domain = 11;
