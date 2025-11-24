@@ -82,7 +82,7 @@ func (s *CloakHelper) GetUserProfile(ctx context.Context, targetUserID string) (
 func (s *CloakHelper) GetPublicUserData(ctx context.Context, targetUserID string) (*PublicUserData, error) {
 	user, err := s.GetUserProfile(ctx, targetUserID)
 	if err != nil {
-		return nil, fmt.Errorf("failed to get user %s: %w", targetUserID, err)
+		return nil, err
 	}
 
 	// 3. Filter and return safe public data
