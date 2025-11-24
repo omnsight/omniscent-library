@@ -21,58 +21,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type Sensitivity int32
-
-const (
-	Sensitivity_SENSITIVITY_PUBLIC_UNSPECIFIED Sensitivity = 0
-	Sensitivity_SENSITIVITY_PRIVILEGED         Sensitivity = 1
-	Sensitivity_SENSITIVITY_COMMERCIAL         Sensitivity = 2
-	Sensitivity_SENSITIVITY_CONFIDENTIAL       Sensitivity = 3
-)
-
-// Enum value maps for Sensitivity.
-var (
-	Sensitivity_name = map[int32]string{
-		0: "SENSITIVITY_PUBLIC_UNSPECIFIED",
-		1: "SENSITIVITY_PRIVILEGED",
-		2: "SENSITIVITY_COMMERCIAL",
-		3: "SENSITIVITY_CONFIDENTIAL",
-	}
-	Sensitivity_value = map[string]int32{
-		"SENSITIVITY_PUBLIC_UNSPECIFIED": 0,
-		"SENSITIVITY_PRIVILEGED":         1,
-		"SENSITIVITY_COMMERCIAL":         2,
-		"SENSITIVITY_CONFIDENTIAL":       3,
-	}
-)
-
-func (x Sensitivity) Enum() *Sensitivity {
-	p := new(Sensitivity)
-	*p = x
-	return p
-}
-
-func (x Sensitivity) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (Sensitivity) Descriptor() protoreflect.EnumDescriptor {
-	return file_model_v1_common_proto_enumTypes[0].Descriptor()
-}
-
-func (Sensitivity) Type() protoreflect.EnumType {
-	return &file_model_v1_common_proto_enumTypes[0]
-}
-
-func (x Sensitivity) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use Sensitivity.Descriptor instead.
-func (Sensitivity) EnumDescriptor() ([]byte, []int) {
-	return file_model_v1_common_proto_rawDescGZIP(), []int{0}
-}
-
 type LocationData struct {
 	state                 protoimpl.MessageState `protogen:"open.v1"`
 	Latitude              float32                `protobuf:"fixed32,1,opt,name=latitude,proto3" json:"latitude,omitempty"`
@@ -197,12 +145,7 @@ const file_model_v1_common_proto_rawDesc = "" +
 	"\aaddress\x18\t \x01(\tR\aaddress\x12\x1f\n" +
 	"\vpostal_code\x18\n" +
 	" \x01(\x05R\n" +
-	"postalCode*\x87\x01\n" +
-	"\vSensitivity\x12\"\n" +
-	"\x1eSENSITIVITY_PUBLIC_UNSPECIFIED\x10\x00\x12\x1a\n" +
-	"\x16SENSITIVITY_PRIVILEGED\x10\x01\x12\x1a\n" +
-	"\x16SENSITIVITY_COMMERCIAL\x10\x02\x12\x1c\n" +
-	"\x18SENSITIVITY_CONFIDENTIAL\x10\x03B:Z8github.com/omnsight/omniscent-library/gen/model/v1;modelb\x06proto3"
+	"postalCodeB:Z8github.com/omnsight/omniscent-library/gen/model/v1;modelb\x06proto3"
 
 var (
 	file_model_v1_common_proto_rawDescOnce sync.Once
@@ -216,11 +159,9 @@ func file_model_v1_common_proto_rawDescGZIP() []byte {
 	return file_model_v1_common_proto_rawDescData
 }
 
-var file_model_v1_common_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_model_v1_common_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
 var file_model_v1_common_proto_goTypes = []any{
-	(Sensitivity)(0),     // 0: model.v1.Sensitivity
-	(*LocationData)(nil), // 1: model.v1.LocationData
+	(*LocationData)(nil), // 0: model.v1.LocationData
 }
 var file_model_v1_common_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
@@ -240,14 +181,13 @@ func file_model_v1_common_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_model_v1_common_proto_rawDesc), len(file_model_v1_common_proto_rawDesc)),
-			NumEnums:      1,
+			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
 		GoTypes:           file_model_v1_common_proto_goTypes,
 		DependencyIndexes: file_model_v1_common_proto_depIdxs,
-		EnumInfos:         file_model_v1_common_proto_enumTypes,
 		MessageInfos:      file_model_v1_common_proto_msgTypes,
 	}.Build()
 	File_model_v1_common_proto = out.File

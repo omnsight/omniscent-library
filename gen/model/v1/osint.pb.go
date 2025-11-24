@@ -33,8 +33,8 @@ type Relation struct {
 	// @gotags: json:"_to,omitempty"
 	To string `protobuf:"bytes,4,opt,name=to,proto3" json:"_to,omitempty"`
 	// @gotags: json:"_rev,omitempty"
-	Rev         string      `protobuf:"bytes,5,opt,name=rev,proto3" json:"_rev,omitempty"`
-	Sensitivity Sensitivity `protobuf:"varint,6,opt,name=sensitivity,proto3,enum=model.v1.Sensitivity" json:"sensitivity,omitempty"`
+	Rev   string   `protobuf:"bytes,5,opt,name=rev,proto3" json:"_rev,omitempty"`
+	Roles []string `protobuf:"bytes,6,rep,name=roles,proto3" json:"roles,omitempty"`
 	// Main Data
 	Name       string                     `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
 	Confidence int32                      `protobuf:"varint,11,opt,name=confidence,proto3" json:"confidence,omitempty"`
@@ -111,11 +111,11 @@ func (x *Relation) GetRev() string {
 	return ""
 }
 
-func (x *Relation) GetSensitivity() Sensitivity {
+func (x *Relation) GetRoles() []string {
 	if x != nil {
-		return x.Sensitivity
+		return x.Roles
 	}
-	return Sensitivity_SENSITIVITY_PUBLIC_UNSPECIFIED
+	return nil
 }
 
 func (x *Relation) GetName() string {
@@ -161,8 +161,8 @@ type Event struct {
 	// @gotags: json:"_key,omitempty"
 	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
 	// @gotags: json:"_rev,omitempty"
-	Rev         string      `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
-	Sensitivity Sensitivity `protobuf:"varint,4,opt,name=sensitivity,proto3,enum=model.v1.Sensitivity" json:"sensitivity,omitempty"`
+	Rev   string   `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
+	Roles []string `protobuf:"bytes,4,rep,name=roles,proto3" json:"roles,omitempty"`
 	// Main Data
 	Location    *LocationData `protobuf:"bytes,10,opt,name=location,proto3" json:"location,omitempty"`
 	Title       string        `protobuf:"bytes,11,opt,name=title,proto3" json:"title,omitempty"`
@@ -227,11 +227,11 @@ func (x *Event) GetRev() string {
 	return ""
 }
 
-func (x *Event) GetSensitivity() Sensitivity {
+func (x *Event) GetRoles() []string {
 	if x != nil {
-		return x.Sensitivity
+		return x.Roles
 	}
-	return Sensitivity_SENSITIVITY_PUBLIC_UNSPECIFIED
+	return nil
 }
 
 func (x *Event) GetLocation() *LocationData {
@@ -284,8 +284,8 @@ type Source struct {
 	// @gotags: json:"_key,omitempty"
 	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
 	// @gotags: json:"_rev,omitempty"
-	Rev         string      `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
-	Sensitivity Sensitivity `protobuf:"varint,4,opt,name=sensitivity,proto3,enum=model.v1.Sensitivity" json:"sensitivity,omitempty"`
+	Rev   string   `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
+	Roles []string `protobuf:"bytes,4,rep,name=roles,proto3" json:"roles,omitempty"`
 	// Main Data
 	Name        string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
 	Url         string `protobuf:"bytes,11,opt,name=url,proto3" json:"url,omitempty"`
@@ -352,11 +352,11 @@ func (x *Source) GetRev() string {
 	return ""
 }
 
-func (x *Source) GetSensitivity() Sensitivity {
+func (x *Source) GetRoles() []string {
 	if x != nil {
-		return x.Sensitivity
+		return x.Roles
 	}
-	return Sensitivity_SENSITIVITY_PUBLIC_UNSPECIFIED
+	return nil
 }
 
 func (x *Source) GetName() string {
@@ -423,8 +423,8 @@ type Person struct {
 	// @gotags: json:"_key,omitempty"
 	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
 	// @gotags: json:"_rev,omitempty"
-	Rev         string      `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
-	Sensitivity Sensitivity `protobuf:"varint,4,opt,name=sensitivity,proto3,enum=model.v1.Sensitivity" json:"sensitivity,omitempty"`
+	Rev   string   `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
+	Roles []string `protobuf:"bytes,4,rep,name=roles,proto3" json:"roles,omitempty"`
 	// Main Data
 	Name        string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
 	Role        string `protobuf:"bytes,11,opt,name=role,proto3" json:"role,omitempty"`
@@ -490,11 +490,11 @@ func (x *Person) GetRev() string {
 	return ""
 }
 
-func (x *Person) GetSensitivity() Sensitivity {
+func (x *Person) GetRoles() []string {
 	if x != nil {
-		return x.Sensitivity
+		return x.Roles
 	}
-	return Sensitivity_SENSITIVITY_PUBLIC_UNSPECIFIED
+	return nil
 }
 
 func (x *Person) GetName() string {
@@ -554,8 +554,8 @@ type Organization struct {
 	// @gotags: json:"_key,omitempty"
 	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
 	// @gotags: json:"_rev,omitempty"
-	Rev         string      `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
-	Sensitivity Sensitivity `protobuf:"varint,4,opt,name=sensitivity,proto3,enum=model.v1.Sensitivity" json:"sensitivity,omitempty"`
+	Rev   string   `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
+	Roles []string `protobuf:"bytes,4,rep,name=roles,proto3" json:"roles,omitempty"`
 	// Main Data
 	Name string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
 	Type string `protobuf:"bytes,11,opt,name=type,proto3" json:"type,omitempty"`
@@ -620,11 +620,11 @@ func (x *Organization) GetRev() string {
 	return ""
 }
 
-func (x *Organization) GetSensitivity() Sensitivity {
+func (x *Organization) GetRoles() []string {
 	if x != nil {
-		return x.Sensitivity
+		return x.Roles
 	}
-	return Sensitivity_SENSITIVITY_PUBLIC_UNSPECIFIED
+	return nil
 }
 
 func (x *Organization) GetName() string {
@@ -677,8 +677,8 @@ type Website struct {
 	// @gotags: json:"_key,omitempty"
 	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
 	// @gotags: json:"_rev,omitempty"
-	Rev         string      `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
-	Sensitivity Sensitivity `protobuf:"varint,4,opt,name=sensitivity,proto3,enum=model.v1.Sensitivity" json:"sensitivity,omitempty"`
+	Rev   string   `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
+	Roles []string `protobuf:"bytes,4,rep,name=roles,proto3" json:"roles,omitempty"`
 	// Main Data
 	Url         string `protobuf:"bytes,10,opt,name=url,proto3" json:"url,omitempty"`
 	Domain      string `protobuf:"bytes,11,opt,name=domain,proto3" json:"domain,omitempty"`
@@ -745,11 +745,11 @@ func (x *Website) GetRev() string {
 	return ""
 }
 
-func (x *Website) GetSensitivity() Sensitivity {
+func (x *Website) GetRoles() []string {
 	if x != nil {
-		return x.Sensitivity
+		return x.Roles
 	}
-	return Sensitivity_SENSITIVITY_PUBLIC_UNSPECIFIED
+	return nil
 }
 
 func (x *Website) GetUrl() string {
@@ -942,14 +942,14 @@ var File_model_v1_osint_proto protoreflect.FileDescriptor
 
 const file_model_v1_osint_proto_rawDesc = "" +
 	"\n" +
-	"\x14model/v1/osint.proto\x12\bmodel.v1\x1a\x15model/v1/common.proto\"\xe9\x04\n" +
+	"\x14model/v1/osint.proto\x12\bmodel.v1\x1a\x15model/v1/common.proto\"\xc6\x04\n" +
 	"\bRelation\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x12\n" +
 	"\x04from\x18\x03 \x01(\tR\x04from\x12\x0e\n" +
 	"\x02to\x18\x04 \x01(\tR\x02to\x12\x10\n" +
-	"\x03rev\x18\x05 \x01(\tR\x03rev\x127\n" +
-	"\vsensitivity\x18\x06 \x01(\x0e2\x15.model.v1.SensitivityR\vsensitivity\x12\x12\n" +
+	"\x03rev\x18\x05 \x01(\tR\x03rev\x12\x14\n" +
+	"\x05roles\x18\x06 \x03(\tR\x05roles\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x1e\n" +
 	"\n" +
@@ -973,12 +973,12 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	"floatValue\x12\x1f\n" +
 	"\n" +
 	"bool_value\x18\x05 \x01(\bH\x00R\tboolValueB\x06\n" +
-	"\x04kind\"\xb4\x02\n" +
+	"\x04kind\"\x91\x02\n" +
 	"\x05Event\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
-	"\x03rev\x18\x03 \x01(\tR\x03rev\x127\n" +
-	"\vsensitivity\x18\x04 \x01(\x0e2\x15.model.v1.SensitivityR\vsensitivity\x122\n" +
+	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x14\n" +
+	"\x05roles\x18\x04 \x03(\tR\x05roles\x122\n" +
 	"\blocation\x18\n" +
 	" \x01(\v2\x16.model.v1.LocationDataR\blocation\x12\x14\n" +
 	"\x05title\x18\v \x01(\tR\x05title\x12 \n" +
@@ -987,12 +987,12 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	"happenedAt\x12\x1d\n" +
 	"\n" +
 	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x12\x12\n" +
-	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xca\x02\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xa7\x02\n" +
 	"\x06Source\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
-	"\x03rev\x18\x03 \x01(\tR\x03rev\x127\n" +
-	"\vsensitivity\x18\x04 \x01(\x0e2\x15.model.v1.SensitivityR\vsensitivity\x12\x12\n" +
+	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x14\n" +
+	"\x05roles\x18\x04 \x03(\tR\x05roles\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x10\n" +
 	"\x03url\x18\v \x01(\tR\x03url\x12\x19\n" +
@@ -1005,12 +1005,12 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	"created_at\x18\x14 \x01(\x03R\tcreatedAt\x12\x1d\n" +
 	"\n" +
 	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x12\x12\n" +
-	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xab\x02\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\"\x88\x02\n" +
 	"\x06Person\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
-	"\x03rev\x18\x03 \x01(\tR\x03rev\x127\n" +
-	"\vsensitivity\x18\x04 \x01(\x0e2\x15.model.v1.SensitivityR\vsensitivity\x12\x12\n" +
+	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x14\n" +
+	"\x05roles\x18\x04 \x03(\tR\x05roles\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x12\n" +
 	"\x04role\x18\v \x01(\tR\x04role\x12 \n" +
@@ -1020,12 +1020,12 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x12\x12\n" +
 	"\x04tags\x18\x1e \x03(\tR\x04tags\x12\x18\n" +
-	"\aaliases\x18\x1f \x03(\tR\aaliases\"\x9e\x02\n" +
+	"\aaliases\x18\x1f \x03(\tR\aaliases\"\xfb\x01\n" +
 	"\fOrganization\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
-	"\x03rev\x18\x03 \x01(\tR\x03rev\x127\n" +
-	"\vsensitivity\x18\x04 \x01(\x0e2\x15.model.v1.SensitivityR\vsensitivity\x12\x12\n" +
+	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x14\n" +
+	"\x05roles\x18\x04 \x03(\tR\x05roles\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x12\n" +
 	"\x04type\x18\v \x01(\tR\x04type\x12\x1d\n" +
@@ -1033,12 +1033,12 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	"founded_at\x18\x14 \x01(\x03R\tfoundedAt\x12#\n" +
 	"\rdiscovered_at\x18\x15 \x01(\x03R\fdiscoveredAt\x12!\n" +
 	"\flast_visited\x18\x16 \x01(\x03R\vlastVisited\x12\x12\n" +
-	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xd3\x02\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xb0\x02\n" +
 	"\aWebsite\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
-	"\x03rev\x18\x03 \x01(\tR\x03rev\x127\n" +
-	"\vsensitivity\x18\x04 \x01(\x0e2\x15.model.v1.SensitivityR\vsensitivity\x12\x10\n" +
+	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x14\n" +
+	"\x05roles\x18\x04 \x03(\tR\x05roles\x12\x10\n" +
 	"\x03url\x18\n" +
 	" \x01(\tR\x03url\x12\x16\n" +
 	"\x06domain\x18\v \x01(\tR\x06domain\x12\x14\n" +
@@ -1072,24 +1072,17 @@ var file_model_v1_osint_proto_goTypes = []any{
 	(*Website)(nil),        // 5: model.v1.Website
 	nil,                    // 6: model.v1.Relation.AttributesEntry
 	(*Relation_Value)(nil), // 7: model.v1.Relation.Value
-	(Sensitivity)(0),       // 8: model.v1.Sensitivity
-	(*LocationData)(nil),   // 9: model.v1.LocationData
+	(*LocationData)(nil),   // 8: model.v1.LocationData
 }
 var file_model_v1_osint_proto_depIdxs = []int32{
-	8, // 0: model.v1.Relation.sensitivity:type_name -> model.v1.Sensitivity
-	6, // 1: model.v1.Relation.attributes:type_name -> model.v1.Relation.AttributesEntry
-	8, // 2: model.v1.Event.sensitivity:type_name -> model.v1.Sensitivity
-	9, // 3: model.v1.Event.location:type_name -> model.v1.LocationData
-	8, // 4: model.v1.Source.sensitivity:type_name -> model.v1.Sensitivity
-	8, // 5: model.v1.Person.sensitivity:type_name -> model.v1.Sensitivity
-	8, // 6: model.v1.Organization.sensitivity:type_name -> model.v1.Sensitivity
-	8, // 7: model.v1.Website.sensitivity:type_name -> model.v1.Sensitivity
-	7, // 8: model.v1.Relation.AttributesEntry.value:type_name -> model.v1.Relation.Value
-	9, // [9:9] is the sub-list for method output_type
-	9, // [9:9] is the sub-list for method input_type
-	9, // [9:9] is the sub-list for extension type_name
-	9, // [9:9] is the sub-list for extension extendee
-	0, // [0:9] is the sub-list for field type_name
+	6, // 0: model.v1.Relation.attributes:type_name -> model.v1.Relation.AttributesEntry
+	8, // 1: model.v1.Event.location:type_name -> model.v1.LocationData
+	7, // 2: model.v1.Relation.AttributesEntry.value:type_name -> model.v1.Relation.Value
+	3, // [3:3] is the sub-list for method output_type
+	3, // [3:3] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_model_v1_osint_proto_init() }
