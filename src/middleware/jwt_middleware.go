@@ -9,6 +9,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
+	"github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
@@ -79,6 +80,27 @@ func GrpcGatewayIdentityInterceptor(clientID string) grpc.UnaryServerInterceptor
 	}
 }
 
+func GetUser(ctx context.Context) (string, []string, error) {
+	userIDVal := ctx.Value(UserIDKey)
+	rolesVal := ctx.Value(UserRolesKey)
+
+	// 检查用户ID是否存在
+	userID, ok := userIDVal.(string)
+	if !ok || userID == "" {
+		logrus.Errorf("User ID not found in context %v", userID)
+		return "", nil, status.Error(codes.Unauthenticated, "Unauthorized")
+	}
+
+	// 检查角色是否存在
+	roles, ok := rolesVal.([]string)
+	if !ok {
+		logrus.Errorf("User roles not found in context %v", roles)
+		return "", nil, status.Error(codes.Unauthenticated, "Unauthorized")
+	}
+
+	return userID, roles, nil
+}
+
 func AuthMiddleware(clientID string) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authHeader := c.GetHeader("Authorization")
@@ -121,9 +143,42 @@ func AuthMiddleware(clientID string) gin.HandlerFunc {
 		}
 
 		// 4. Inject into Context for downstream handlers
-		c.Set("userID", userID)
-		c.Set("userRoles", roles)
+		c.Set(string(UserIDKey), userID)
+		c.Set(string(UserRolesKey), roles)
 
 		c.Next()
 	}
+}
+
+// GetGinUser retrieves user ID and roles from Gin context
+func GetGinUser(c *gin.Context) (string, []string, error) {
+	// Retrieve user ID from context
+	userIDVal, exists := c.Get(UserIDKey)
+	if !exists {
+		logrus.Errorf("User ID not found in Gin context")
+		return "", nil, status.Error(codes.Unauthenticated, "Unauthorized")
+	}
+
+	userID, ok := userIDVal.(string)
+	if !ok || userID == "" {
+		logrus.Errorf("Invalid user ID in Gin context: %v", userIDVal)
+		return "", nil, status.Error(codes.Unauthenticated, "Unauthorized")
+	}
+
+	// Retrieve roles from context
+	rolesVal, exists := c.Get(UserRolesKey)
+	if !exists {
+		logrus.Errorf("Roles not found in Gin context")
+		return "", nil, status.Error(codes.Unauthenticated, "Unauthorized")
+	}
+
+	var roles []string
+	if rolesSlice, ok := rolesVal.([]string); ok {
+		roles = rolesSlice
+	} else {
+		logrus.Errorf("Invalid roles type in Gin context: %T", rolesVal)
+		return "", nil, status.Error(codes.Unauthenticated, "Unauthorized")
+	}
+
+	return userID, roles, nil
 }
