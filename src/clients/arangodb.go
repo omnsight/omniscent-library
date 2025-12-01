@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"sync"
+	"time"
 
 	"github.com/arangodb/go-driver"
 	"github.com/arangodb/go-driver/http"
@@ -21,9 +23,10 @@ const (
 
 // ArangoDBClient represents a connection to ArangoDB
 type ArangoDBClient struct {
-	Client     driver.Client
-	DB         driver.Database
-	OsintGraph driver.Graph
+	Client        driver.Client
+	DB            driver.Database
+	OsintGraph    driver.Graph
+	GraphSchemaMu sync.Mutex
 }
 
 // NewArangoDBClient creates a new ArangoDB client and connects to the database
@@ -73,15 +76,16 @@ func NewArangoDBClient() (*ArangoDBClient, error) {
 	}
 
 	ctx := context.Background()
-	osintGraph, err := CreateOrGetGraph(db, ctx, "osint", nil)
+	osintGraph, err := EnsureGraph(db, ctx, "osint", nil)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get osint graph: %v", err)
 	}
 
 	arangoClient := ArangoDBClient{
-		Client:     client,
-		DB:         db,
-		OsintGraph: osintGraph,
+		Client:        client,
+		DB:            db,
+		OsintGraph:    osintGraph,
+		GraphSchemaMu: sync.Mutex{},
 	}
 
 	return &arangoClient, nil
@@ -106,22 +110,43 @@ func (c *ArangoDBClient) GetClient() driver.Client {
 }
 
 func (c *ArangoDBClient) GetCreateCollection(ctx context.Context, name string, options driver.CreateVertexCollectionOptions) (driver.Collection, error) {
-	collection, err := c.DB.Collection(ctx, name)
+	exists, err := c.OsintGraph.VertexCollectionExists(ctx, name)
 	if err != nil {
-		if driver.IsNotFoundGeneral(err) {
-			collection, err = c.OsintGraph.CreateVertexCollectionWithOptions(ctx, name, options)
-			if err != nil {
-				return nil, err
-			}
-		}
-		return collection, nil
-	} else {
-		return collection, nil
+		return nil, err
 	}
+	if exists {
+		return c.OsintGraph.VertexCollection(ctx, name)
+	}
+
+	c.GraphSchemaMu.Lock()
+	defer c.GraphSchemaMu.Unlock()
+
+	exists, err = c.OsintGraph.VertexCollectionExists(ctx, name)
+	if err != nil {
+		return nil, err
+	}
+
+	if exists {
+		return c.OsintGraph.VertexCollection(ctx, name)
+	}
+
+	return c.OsintGraph.CreateVertexCollectionWithOptions(ctx, name, options)
 }
 
 func (c *ArangoDBClient) GetCreateEdgeCollection(ctx context.Context, name string, constraints driver.VertexConstraints, options driver.CreateEdgeCollectionOptions) (driver.Collection, error) {
 	exists, err := c.OsintGraph.EdgeCollectionExists(ctx, name)
+	if err != nil {
+		return nil, err
+	}
+	if exists {
+		collection, _, err := c.OsintGraph.EdgeCollection(ctx, name)
+		return collection, err
+	}
+
+	c.GraphSchemaMu.Lock()
+	defer c.GraphSchemaMu.Unlock()
+
+	exists, err = c.OsintGraph.EdgeCollectionExists(ctx, name)
 	if err != nil {
 		return nil, err
 	}
@@ -134,20 +159,33 @@ func (c *ArangoDBClient) GetCreateEdgeCollection(ctx context.Context, name strin
 	return c.OsintGraph.CreateEdgeCollectionWithOptions(ctx, name, constraints, options)
 }
 
-func CreateOrGetGraph(db driver.Database, ctx context.Context, name string, options *driver.CreateGraphOptions) (driver.Graph, error) {
-	graph, err := db.Graph(ctx, name)
-	if err != nil {
-		if driver.IsNotFoundGeneral(err) {
-			graph, err = db.CreateGraphV2(ctx, name, options)
-			if err != nil {
-				return nil, err
-			}
+func EnsureGraph(db driver.Database, ctx context.Context, name string, options *driver.CreateGraphOptions) (driver.Graph, error) {
+	for range [5]int{} {
+		graph, err := CreateOrGetGraph(db, ctx, name, options)
+		if err == nil {
 			return graph, nil
 		}
-		return nil, err
-	} else {
-		return graph, nil
+
+		if driver.IsConflict(err) {
+			time.After(2 * time.Second)
+		} else {
+			return nil, err
+		}
 	}
+	return nil, fmt.Errorf("failed to create graph")
+}
+
+func CreateOrGetGraph(db driver.Database, ctx context.Context, name string, options *driver.CreateGraphOptions) (driver.Graph, error) {
+	exists, err := db.GraphExists(ctx, name)
+	if err != nil {
+		return nil, err
+	}
+	if exists {
+		return db.Graph(ctx, name)
+	}
+
+	graph, err := db.CreateGraphV2(ctx, name, options)
+	return graph, err
 }
 
 func createOrGetDatabase(client driver.Client, dbName string) (driver.Database, error) {
