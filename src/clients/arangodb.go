@@ -121,18 +121,17 @@ func (c *ArangoDBClient) GetCreateCollection(ctx context.Context, name string, o
 }
 
 func (c *ArangoDBClient) GetCreateEdgeCollection(ctx context.Context, name string, constraints driver.VertexConstraints, options driver.CreateEdgeCollectionOptions) (driver.Collection, error) {
-	collection, err := c.DB.Collection(ctx, name)
+	exists, err := c.OsintGraph.EdgeCollectionExists(ctx, name)
 	if err != nil {
-		if driver.IsNotFoundGeneral(err) {
-			collection, err = c.OsintGraph.CreateEdgeCollectionWithOptions(ctx, name, constraints, options)
-			if err != nil {
-				return nil, err
-			}
-		}
-		return collection, nil
-	} else {
-		return collection, nil
+		return nil, err
 	}
+
+	if exists {
+		collection, _, err := c.OsintGraph.EdgeCollection(ctx, name)
+		return collection, err
+	}
+
+	return c.OsintGraph.CreateEdgeCollectionWithOptions(ctx, name, constraints, options)
 }
 
 func CreateOrGetGraph(db driver.Database, ctx context.Context, name string, options *driver.CreateGraphOptions) (driver.Graph, error) {
