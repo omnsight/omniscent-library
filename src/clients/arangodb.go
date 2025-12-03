@@ -70,7 +70,7 @@ func NewArangoDBClient() (*ArangoDBClient, error) {
 	}
 
 	// Create or get database
-	db, err := createOrGetDatabase(client, databaseName)
+	db, err := EnsureDatabase(client, databaseName)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get database: %v", err)
 	}
@@ -167,7 +167,7 @@ func EnsureGraph(db driver.Database, ctx context.Context, name string, options *
 		}
 
 		if driver.IsConflict(err) {
-			time.After(2 * time.Second)
+			time.Sleep(2 * time.Second)
 		} else {
 			return nil, err
 		}
@@ -186,6 +186,22 @@ func CreateOrGetGraph(db driver.Database, ctx context.Context, name string, opti
 
 	graph, err := db.CreateGraphV2(ctx, name, options)
 	return graph, err
+}
+
+func EnsureDatabase(client driver.Client, dbName string) (driver.Database, error) {
+	for range [5]int{} {
+		db, err := createOrGetDatabase(client, dbName)
+		if err == nil {
+			return db, nil
+		}
+
+		if driver.IsConflict(err) {
+			time.Sleep(2 * time.Second)
+		} else {
+			return nil, err
+		}
+	}
+	return nil, fmt.Errorf("failed to create database")
 }
 
 func createOrGetDatabase(client driver.Client, dbName string) (driver.Database, error) {
