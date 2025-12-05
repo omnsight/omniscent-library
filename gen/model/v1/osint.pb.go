@@ -292,6 +292,7 @@ type Source struct {
 	RootUrl     string `protobuf:"bytes,12,opt,name=root_url,json=rootUrl,proto3" json:"root_url,omitempty"`
 	Reliability int32  `protobuf:"varint,13,opt,name=reliability,proto3" json:"reliability,omitempty"`
 	Monitoring  int32  `protobuf:"varint,14,opt,name=monitoring,proto3" json:"monitoring,omitempty"`
+	Title       string `protobuf:"bytes,15,opt,name=title,proto3" json:"title,omitempty"`
 	// Time data
 	CreatedAt int64 `protobuf:"varint,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt int64 `protobuf:"varint,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
@@ -392,6 +393,13 @@ func (x *Source) GetMonitoring() int32 {
 		return x.Monitoring
 	}
 	return 0
+}
+
+func (x *Source) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
 }
 
 func (x *Source) GetCreatedAt() int64 {
@@ -987,7 +995,7 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	"happenedAt\x12\x1d\n" +
 	"\n" +
 	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x12\x12\n" +
-	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xa7\x02\n" +
+	"\x04tags\x18\x1e \x03(\tR\x04tags\"\xbd\x02\n" +
 	"\x06Source\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
@@ -1000,7 +1008,8 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	"\vreliability\x18\r \x01(\x05R\vreliability\x12\x1e\n" +
 	"\n" +
 	"monitoring\x18\x0e \x01(\x05R\n" +
-	"monitoring\x12\x1d\n" +
+	"monitoring\x12\x14\n" +
+	"\x05title\x18\x0f \x01(\tR\x05title\x12\x1d\n" +
 	"\n" +
 	"created_at\x18\x14 \x01(\x03R\tcreatedAt\x12\x1d\n" +
 	"\n" +
