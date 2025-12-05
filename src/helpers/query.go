@@ -8,7 +8,6 @@ import (
 	"github.com/arangodb/go-driver"
 	"github.com/omnsight/omniscent-library/gen/model/v1"
 	"github.com/sirupsen/logrus"
-	"google.golang.org/protobuf/encoding/protojson"
 )
 
 type DbQueryResult struct {
@@ -27,11 +26,9 @@ func (qr *DbQueryResult) MapToRelatedEntity(cursor driver.Cursor, ctx context.Co
 	logrus.Debugf("query result: %+v", qr)
 
 	// 2. Initialize the Protobuf response with the Relation (Edge)
-	// Use DiscardUnknown to prevent errors if DB has fields not in Proto
-	unmarshalOpts := protojson.UnmarshalOptions{DiscardUnknown: true}
-
+	// Use default json unmarshal
 	relation := &model.Relation{}
-	if err := unmarshalOpts.Unmarshal(qr.Edge, relation); err != nil {
+	if err := json.Unmarshal(qr.Edge, relation); err != nil {
 		return nil, fmt.Errorf("failed to unmarshal relation: %w", err)
 	}
 
@@ -44,28 +41,28 @@ func (qr *DbQueryResult) MapToRelatedEntity(cursor driver.Cursor, ctx context.Co
 	switch qr.Type {
 	case "persons":
 		p := &model.Person{}
-		if err := unmarshalOpts.Unmarshal(qr.Entity, p); err != nil {
+		if err := json.Unmarshal(qr.Entity, p); err != nil {
 			return nil, fmt.Errorf("failed to unmarshal person: %w", err)
 		}
 		result.Entity = &model.RelatedEntity_Person{Person: p}
 
 	case "organizations":
 		o := &model.Organization{}
-		if err := unmarshalOpts.Unmarshal(qr.Entity, o); err != nil {
+		if err := json.Unmarshal(qr.Entity, o); err != nil {
 			return nil, fmt.Errorf("failed to unmarshal organization: %w", err)
 		}
 		result.Entity = &model.RelatedEntity_Organization{Organization: o}
 
 	case "sources":
 		s := &model.Source{}
-		if err := unmarshalOpts.Unmarshal(qr.Entity, s); err != nil {
+		if err := json.Unmarshal(qr.Entity, s); err != nil {
 			return nil, fmt.Errorf("failed to unmarshal source: %w", err)
 		}
 		result.Entity = &model.RelatedEntity_Source{Source: s}
 
 	case "websites":
 		w := &model.Website{}
-		if err := unmarshalOpts.Unmarshal(qr.Entity, w); err != nil {
+		if err := json.Unmarshal(qr.Entity, w); err != nil {
 			return nil, fmt.Errorf("failed to unmarshal website: %w", err)
 		}
 		result.Entity = &model.RelatedEntity_Website{Website: w}
