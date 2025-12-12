@@ -52,3 +52,23 @@ func TestJsonUnmarshalRelation(t *testing.T) {
 		t.Errorf("Expected Confidence to be 95, got %d", r.Confidence)
 	}
 }
+
+func TestJsonUnmarshalEvent(t *testing.T) {
+	jsonData := `{"title": "Conference", "description": "Tech conference", "happened_at": 1678886400}`
+
+	var e model.Event
+	err := json.Unmarshal([]byte(jsonData), &e)
+	if err != nil {
+		t.Fatalf("Failed to unmarshal Event: %v", err)
+	}
+
+	if e.Title != "Conference" {
+		t.Errorf("Expected Title to be Conference, got %s", e.Title)
+	}
+	if e.Description != "Tech conference" {
+		t.Errorf("Expected Description to be Tech conference, got %s", e.Description)
+	}
+	if e.HappenedAt != 1678886400 {
+		t.Errorf("Expected HappenedAt to be 1678886400, got %d", e.HappenedAt)
+	}
+}
