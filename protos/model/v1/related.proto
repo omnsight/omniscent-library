@@ -13,6 +13,6 @@ message RelatedEntity {
     Person person = 3;
     Organization organization = 4;
     Website website = 5;
-    Event event: 6;
+    Event event = 6;
   }
 }
