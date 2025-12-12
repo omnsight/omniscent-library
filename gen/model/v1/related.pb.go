@@ -30,6 +30,7 @@ type RelatedEntity struct {
 	//	*RelatedEntity_Person
 	//	*RelatedEntity_Organization
 	//	*RelatedEntity_Website
+	//	*RelatedEntity_Event
 	Entity        isRelatedEntity_Entity `protobuf_oneof:"entity"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -115,6 +116,15 @@ func (x *RelatedEntity) GetWebsite() *Website {
 	return nil
 }
 
+func (x *RelatedEntity) GetEvent() *Event {
+	if x != nil {
+		if x, ok := x.Entity.(*RelatedEntity_Event); ok {
+			return x.Event
+		}
+	}
+	return nil
+}
+
 type isRelatedEntity_Entity interface {
 	isRelatedEntity_Entity()
 }
@@ -135,6 +145,10 @@ type RelatedEntity_Website struct {
 	Website *Website `protobuf:"bytes,5,opt,name=website,proto3,oneof"`
 }
 
+type RelatedEntity_Event struct {
+	Event *Event `protobuf:"bytes,6,opt,name=event,proto3,oneof"`
+}
+
 func (*RelatedEntity_Source) isRelatedEntity_Entity() {}
 
 func (*RelatedEntity_Person) isRelatedEntity_Entity() {}
@@ -143,17 +157,20 @@ func (*RelatedEntity_Organization) isRelatedEntity_Entity() {}
 
 func (*RelatedEntity_Website) isRelatedEntity_Entity() {}
 
+func (*RelatedEntity_Event) isRelatedEntity_Entity() {}
+
 var File_model_v1_related_proto protoreflect.FileDescriptor
 
 const file_model_v1_related_proto_rawDesc = "" +
 	"\n" +
-	"\x16model/v1/related.proto\x12\bmodel.v1\x1a\x14model/v1/osint.proto\"\x8e\x02\n" +
+	"\x16model/v1/related.proto\x12\bmodel.v1\x1a\x14model/v1/osint.proto\"\xb7\x02\n" +
 	"\rRelatedEntity\x12.\n" +
 	"\brelation\x18\x01 \x01(\v2\x12.model.v1.RelationR\brelation\x12*\n" +
 	"\x06source\x18\x02 \x01(\v2\x10.model.v1.SourceH\x00R\x06source\x12*\n" +
 	"\x06person\x18\x03 \x01(\v2\x10.model.v1.PersonH\x00R\x06person\x12<\n" +
 	"\forganization\x18\x04 \x01(\v2\x16.model.v1.OrganizationH\x00R\forganization\x12-\n" +
-	"\awebsite\x18\x05 \x01(\v2\x11.model.v1.WebsiteH\x00R\awebsiteB\b\n" +
+	"\awebsite\x18\x05 \x01(\v2\x11.model.v1.WebsiteH\x00R\awebsite\x12'\n" +
+	"\x05event\x18\x06 \x01(\v2\x0f.model.v1.EventH\x00R\x05eventB\b\n" +
 	"\x06entityB:Z8github.com/omnsight/omniscent-library/gen/model/v1;modelb\x06proto3"
 
 var (
@@ -176,6 +193,7 @@ var file_model_v1_related_proto_goTypes = []any{
 	(*Person)(nil),        // 3: model.v1.Person
 	(*Organization)(nil),  // 4: model.v1.Organization
 	(*Website)(nil),       // 5: model.v1.Website
+	(*Event)(nil),         // 6: model.v1.Event
 }
 var file_model_v1_related_proto_depIdxs = []int32{
 	1, // 0: model.v1.RelatedEntity.relation:type_name -> model.v1.Relation
@@ -183,11 +201,12 @@ var file_model_v1_related_proto_depIdxs = []int32{
 	3, // 2: model.v1.RelatedEntity.person:type_name -> model.v1.Person
 	4, // 3: model.v1.RelatedEntity.organization:type_name -> model.v1.Organization
 	5, // 4: model.v1.RelatedEntity.website:type_name -> model.v1.Website
-	5, // [5:5] is the sub-list for method output_type
-	5, // [5:5] is the sub-list for method input_type
-	5, // [5:5] is the sub-list for extension type_name
-	5, // [5:5] is the sub-list for extension extendee
-	0, // [0:5] is the sub-list for field type_name
+	6, // 5: model.v1.RelatedEntity.event:type_name -> model.v1.Event
+	6, // [6:6] is the sub-list for method output_type
+	6, // [6:6] is the sub-list for method input_type
+	6, // [6:6] is the sub-list for extension type_name
+	6, // [6:6] is the sub-list for extension extendee
+	0, // [0:6] is the sub-list for field type_name
 }
 
 func init() { file_model_v1_related_proto_init() }
@@ -201,6 +220,7 @@ func file_model_v1_related_proto_init() {
 		(*RelatedEntity_Person)(nil),
 		(*RelatedEntity_Organization)(nil),
 		(*RelatedEntity_Website)(nil),
+		(*RelatedEntity_Event)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
