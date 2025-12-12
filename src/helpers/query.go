@@ -67,6 +67,13 @@ func (qr *DbQueryResult) MapToRelatedEntity(cursor driver.Cursor, ctx context.Co
 		}
 		result.Entity = &model.RelatedEntity_Website{Website: w}
 
+	case "events":
+		e := &model.Event{}
+		if err := json.Unmarshal(qr.Entity, e); err != nil {
+			return nil, fmt.Errorf("failed to unmarshal event: %w", err)
+		}
+		result.Entity = &model.RelatedEntity_Event{Event: e}
+
 	default:
 		// Log a warning or return an error if strict typing is required
 		return nil, fmt.Errorf("encountered unknown entity collection type: %s", qr.Type)
