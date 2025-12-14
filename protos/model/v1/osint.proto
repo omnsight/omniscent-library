@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package model.v1;
 
+import "google/protobuf/struct.proto";
 import "model/v1/common.proto";
 
 option go_package = "github.com/omnsight/omniscent-library/gen/model/v1;model";
@@ -22,20 +23,11 @@ message Relation {
   // Main Data
   string name = 10;
   int32 confidence = 11;
-  map<string, Value> attributes = 12;
-  // Time data
+  // Time Data
   int64 created_at = 20;
   int64 updated_at = 21;
-
-  message Value {
-    oneof kind {
-      string string_value = 1;
-      int64 int_value = 2;
-      double double_value = 3;
-      float float_value = 4;
-      bool bool_value = 5;
-    }
-  }
+  // Additional Data
+  google.protobuf.Struct attributes = 30;
 }
 
 message Event {
@@ -56,6 +48,7 @@ message Event {
   int64 updated_at = 21;
   // Additional
   repeated string tags = 30;
+  google.protobuf.Struct attributes = 31;
 }
 
 message Source {
@@ -79,6 +72,7 @@ message Source {
   int64 updated_at = 21;
   // Additional
   repeated string tags = 30;
+  google.protobuf.Struct attributes = 31;
 }
 
 message Person {
@@ -100,6 +94,7 @@ message Person {
   // Additional
   repeated string tags = 30;
   repeated string aliases = 31;
+  google.protobuf.Struct attributes = 32;
 }
 
 message Organization {
@@ -120,6 +115,7 @@ message Organization {
   int64 last_visited = 22;
   // Additional
   repeated string tags = 30;
+  google.protobuf.Struct attributes = 31;
 }
 
 message Website {
@@ -142,4 +138,15 @@ message Website {
   int64 last_visited = 22;
   // Additional
   repeated string tags = 30;
+  google.protobuf.Struct attributes = 31;
+}
+
+message Entity {
+  oneof entity {
+    Source source = 1;
+    Person person = 2;
+    Organization organization = 3;
+    Website website = 4;
+    Event event = 5;
+  }
 }
