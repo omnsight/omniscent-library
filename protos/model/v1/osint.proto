@@ -60,6 +60,7 @@ message Source {
   // @gotags: json:"_rev,omitempty"
   string rev = 3;
   repeated string roles = 4;
+  string label = 5;
   // Main Data
   string name = 10;
   string url = 11;
