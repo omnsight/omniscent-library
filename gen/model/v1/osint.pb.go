@@ -296,6 +296,7 @@ type Source struct {
 	// @gotags: json:"_rev,omitempty"
 	Rev   string   `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
 	Roles []string `protobuf:"bytes,4,rep,name=roles,proto3" json:"roles,omitempty"`
+	Label string   `protobuf:"bytes,5,opt,name=label,proto3" json:"label,omitempty"`
 	// Main Data
 	Name        string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
 	Url         string `protobuf:"bytes,11,opt,name=url,proto3" json:"url,omitempty"`
@@ -369,6 +370,13 @@ func (x *Source) GetRoles() []string {
 		return x.Roles
 	}
 	return nil
+}
+
+func (x *Source) GetLabel() string {
+	if x != nil {
+		return x.Label
+	}
+	return ""
 }
 
 func (x *Source) GetName() string {
@@ -1028,12 +1036,13 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	"\x04tags\x18\x1e \x03(\tR\x04tags\x127\n" +
 	"\n" +
 	"attributes\x18\x1f \x01(\v2\x17.google.protobuf.StructR\n" +
-	"attributes\"\xf6\x02\n" +
+	"attributes\"\x8c\x03\n" +
 	"\x06Source\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
 	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x14\n" +
-	"\x05roles\x18\x04 \x03(\tR\x05roles\x12\x12\n" +
+	"\x05roles\x18\x04 \x03(\tR\x05roles\x12\x14\n" +
+	"\x05label\x18\x05 \x01(\tR\x05label\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x10\n" +
 	"\x03url\x18\v \x01(\tR\x03url\x12\x19\n" +
