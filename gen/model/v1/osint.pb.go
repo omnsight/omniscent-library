@@ -35,7 +35,9 @@ type Relation struct {
 	To string `protobuf:"bytes,4,opt,name=to,proto3" json:"_to,omitempty"`
 	// @gotags: json:"_rev,omitempty"
 	Rev   string   `protobuf:"bytes,5,opt,name=rev,proto3" json:"_rev,omitempty"`
-	Roles []string `protobuf:"bytes,6,rep,name=roles,proto3" json:"roles,omitempty"`
+	Owner string   `protobuf:"bytes,6,opt,name=owner,proto3" json:"owner,omitempty"`
+	Read  []string `protobuf:"bytes,7,rep,name=read,proto3" json:"read,omitempty"`
+	Write []string `protobuf:"bytes,8,rep,name=write,proto3" json:"write,omitempty"`
 	// Main Data
 	Name       string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
 	Confidence int32  `protobuf:"varint,11,opt,name=confidence,proto3" json:"confidence,omitempty"`
@@ -113,9 +115,23 @@ func (x *Relation) GetRev() string {
 	return ""
 }
 
-func (x *Relation) GetRoles() []string {
+func (x *Relation) GetOwner() string {
 	if x != nil {
-		return x.Roles
+		return x.Owner
+	}
+	return ""
+}
+
+func (x *Relation) GetRead() []string {
+	if x != nil {
+		return x.Read
+	}
+	return nil
+}
+
+func (x *Relation) GetWrite() []string {
+	if x != nil {
+		return x.Write
 	}
 	return nil
 }
@@ -164,11 +180,14 @@ type Event struct {
 	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
 	// @gotags: json:"_rev,omitempty"
 	Rev   string   `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
-	Roles []string `protobuf:"bytes,4,rep,name=roles,proto3" json:"roles,omitempty"`
+	Owner string   `protobuf:"bytes,4,opt,name=owner,proto3" json:"owner,omitempty"`
+	Read  []string `protobuf:"bytes,5,rep,name=read,proto3" json:"read,omitempty"`
+	Write []string `protobuf:"bytes,6,rep,name=write,proto3" json:"write,omitempty"`
 	// Main Data
-	Location    *LocationData `protobuf:"bytes,10,opt,name=location,proto3" json:"location,omitempty"`
-	Title       string        `protobuf:"bytes,11,opt,name=title,proto3" json:"title,omitempty"`
-	Description string        `protobuf:"bytes,12,opt,name=description,proto3" json:"description,omitempty"`
+	Type        string        `protobuf:"bytes,10,opt,name=type,proto3" json:"type,omitempty"`
+	Location    *LocationData `protobuf:"bytes,11,opt,name=location,proto3" json:"location,omitempty"`
+	Title       string        `protobuf:"bytes,12,opt,name=title,proto3" json:"title,omitempty"`
+	Description string        `protobuf:"bytes,13,opt,name=description,proto3" json:"description,omitempty"`
 	// Time data
 	HappenedAt int64 `protobuf:"varint,20,opt,name=happened_at,json=happenedAt,proto3" json:"happened_at,omitempty"`
 	UpdatedAt  int64 `protobuf:"varint,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
@@ -230,11 +249,32 @@ func (x *Event) GetRev() string {
 	return ""
 }
 
-func (x *Event) GetRoles() []string {
+func (x *Event) GetOwner() string {
 	if x != nil {
-		return x.Roles
+		return x.Owner
+	}
+	return ""
+}
+
+func (x *Event) GetRead() []string {
+	if x != nil {
+		return x.Read
 	}
 	return nil
+}
+
+func (x *Event) GetWrite() []string {
+	if x != nil {
+		return x.Write
+	}
+	return nil
+}
+
+func (x *Event) GetType() string {
+	if x != nil {
+		return x.Type
+	}
+	return ""
 }
 
 func (x *Event) GetLocation() *LocationData {
@@ -295,14 +335,16 @@ type Source struct {
 	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
 	// @gotags: json:"_rev,omitempty"
 	Rev   string   `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
-	Roles []string `protobuf:"bytes,4,rep,name=roles,proto3" json:"roles,omitempty"`
+	Owner string   `protobuf:"bytes,4,opt,name=owner,proto3" json:"owner,omitempty"`
+	Read  []string `protobuf:"bytes,5,rep,name=read,proto3" json:"read,omitempty"`
+	Write []string `protobuf:"bytes,6,rep,name=write,proto3" json:"write,omitempty"`
 	// Main Data
-	Name        string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
+	Type        string `protobuf:"bytes,10,opt,name=type,proto3" json:"type,omitempty"`
 	Url         string `protobuf:"bytes,11,opt,name=url,proto3" json:"url,omitempty"`
-	RootUrl     string `protobuf:"bytes,12,opt,name=root_url,json=rootUrl,proto3" json:"root_url,omitempty"`
-	Reliability int32  `protobuf:"varint,13,opt,name=reliability,proto3" json:"reliability,omitempty"`
-	Monitoring  int32  `protobuf:"varint,14,opt,name=monitoring,proto3" json:"monitoring,omitempty"`
-	Title       string `protobuf:"bytes,15,opt,name=title,proto3" json:"title,omitempty"`
+	Name        string `protobuf:"bytes,12,opt,name=name,proto3" json:"name,omitempty"`
+	Title       string `protobuf:"bytes,13,opt,name=title,proto3" json:"title,omitempty"`
+	Description string `protobuf:"bytes,14,opt,name=description,proto3" json:"description,omitempty"`
+	Reliability int32  `protobuf:"varint,15,opt,name=reliability,proto3" json:"reliability,omitempty"`
 	// Time data
 	CreatedAt int64 `protobuf:"varint,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt int64 `protobuf:"varint,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
@@ -364,16 +406,30 @@ func (x *Source) GetRev() string {
 	return ""
 }
 
-func (x *Source) GetRoles() []string {
+func (x *Source) GetOwner() string {
 	if x != nil {
-		return x.Roles
+		return x.Owner
+	}
+	return ""
+}
+
+func (x *Source) GetRead() []string {
+	if x != nil {
+		return x.Read
 	}
 	return nil
 }
 
-func (x *Source) GetName() string {
+func (x *Source) GetWrite() []string {
 	if x != nil {
-		return x.Name
+		return x.Write
+	}
+	return nil
+}
+
+func (x *Source) GetType() string {
+	if x != nil {
+		return x.Type
 	}
 	return ""
 }
@@ -385,9 +441,23 @@ func (x *Source) GetUrl() string {
 	return ""
 }
 
-func (x *Source) GetRootUrl() string {
+func (x *Source) GetName() string {
 	if x != nil {
-		return x.RootUrl
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Source) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *Source) GetDescription() string {
+	if x != nil {
+		return x.Description
 	}
 	return ""
 }
@@ -397,20 +467,6 @@ func (x *Source) GetReliability() int32 {
 		return x.Reliability
 	}
 	return 0
-}
-
-func (x *Source) GetMonitoring() int32 {
-	if x != nil {
-		return x.Monitoring
-	}
-	return 0
-}
-
-func (x *Source) GetTitle() string {
-	if x != nil {
-		return x.Title
-	}
-	return ""
 }
 
 func (x *Source) GetCreatedAt() int64 {
@@ -450,10 +506,12 @@ type Person struct {
 	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
 	// @gotags: json:"_rev,omitempty"
 	Rev   string   `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
-	Roles []string `protobuf:"bytes,4,rep,name=roles,proto3" json:"roles,omitempty"`
+	Owner string   `protobuf:"bytes,4,opt,name=owner,proto3" json:"owner,omitempty"`
+	Read  []string `protobuf:"bytes,5,rep,name=read,proto3" json:"read,omitempty"`
+	Write []string `protobuf:"bytes,6,rep,name=write,proto3" json:"write,omitempty"`
 	// Main Data
-	Name        string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
-	Role        string `protobuf:"bytes,11,opt,name=role,proto3" json:"role,omitempty"`
+	Role        string `protobuf:"bytes,10,opt,name=role,proto3" json:"role,omitempty"`
+	Name        string `protobuf:"bytes,11,opt,name=name,proto3" json:"name,omitempty"`
 	Nationality string `protobuf:"bytes,12,opt,name=nationality,proto3" json:"nationality,omitempty"`
 	// Time data
 	BirthDate int64 `protobuf:"varint,20,opt,name=birth_date,json=birthDate,proto3" json:"birth_date,omitempty"`
@@ -517,23 +575,37 @@ func (x *Person) GetRev() string {
 	return ""
 }
 
-func (x *Person) GetRoles() []string {
+func (x *Person) GetOwner() string {
 	if x != nil {
-		return x.Roles
+		return x.Owner
+	}
+	return ""
+}
+
+func (x *Person) GetRead() []string {
+	if x != nil {
+		return x.Read
 	}
 	return nil
 }
 
-func (x *Person) GetName() string {
+func (x *Person) GetWrite() []string {
 	if x != nil {
-		return x.Name
+		return x.Write
 	}
-	return ""
+	return nil
 }
 
 func (x *Person) GetRole() string {
 	if x != nil {
 		return x.Role
+	}
+	return ""
+}
+
+func (x *Person) GetName() string {
+	if x != nil {
+		return x.Name
 	}
 	return ""
 }
@@ -589,10 +661,12 @@ type Organization struct {
 	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
 	// @gotags: json:"_rev,omitempty"
 	Rev   string   `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
-	Roles []string `protobuf:"bytes,4,rep,name=roles,proto3" json:"roles,omitempty"`
+	Owner string   `protobuf:"bytes,4,opt,name=owner,proto3" json:"owner,omitempty"`
+	Read  []string `protobuf:"bytes,5,rep,name=read,proto3" json:"read,omitempty"`
+	Write []string `protobuf:"bytes,6,rep,name=write,proto3" json:"write,omitempty"`
 	// Main Data
-	Name string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
-	Type string `protobuf:"bytes,11,opt,name=type,proto3" json:"type,omitempty"`
+	Type string `protobuf:"bytes,10,opt,name=type,proto3" json:"type,omitempty"`
+	Name string `protobuf:"bytes,11,opt,name=name,proto3" json:"name,omitempty"`
 	// Time data
 	FoundedAt    int64 `protobuf:"varint,20,opt,name=founded_at,json=foundedAt,proto3" json:"founded_at,omitempty"`
 	DiscoveredAt int64 `protobuf:"varint,21,opt,name=discovered_at,json=discoveredAt,proto3" json:"discovered_at,omitempty"`
@@ -655,23 +729,37 @@ func (x *Organization) GetRev() string {
 	return ""
 }
 
-func (x *Organization) GetRoles() []string {
+func (x *Organization) GetOwner() string {
 	if x != nil {
-		return x.Roles
+		return x.Owner
+	}
+	return ""
+}
+
+func (x *Organization) GetRead() []string {
+	if x != nil {
+		return x.Read
 	}
 	return nil
 }
 
-func (x *Organization) GetName() string {
+func (x *Organization) GetWrite() []string {
 	if x != nil {
-		return x.Name
+		return x.Write
 	}
-	return ""
+	return nil
 }
 
 func (x *Organization) GetType() string {
 	if x != nil {
 		return x.Type
+	}
+	return ""
+}
+
+func (x *Organization) GetName() string {
+	if x != nil {
+		return x.Name
 	}
 	return ""
 }
@@ -720,12 +808,13 @@ type Website struct {
 	Key string `protobuf:"bytes,2,opt,name=key,proto3" json:"_key,omitempty"`
 	// @gotags: json:"_rev,omitempty"
 	Rev   string   `protobuf:"bytes,3,opt,name=rev,proto3" json:"_rev,omitempty"`
-	Roles []string `protobuf:"bytes,4,rep,name=roles,proto3" json:"roles,omitempty"`
+	Owner string   `protobuf:"bytes,4,opt,name=owner,proto3" json:"owner,omitempty"`
+	Read  []string `protobuf:"bytes,5,rep,name=read,proto3" json:"read,omitempty"`
+	Write []string `protobuf:"bytes,6,rep,name=write,proto3" json:"write,omitempty"`
 	// Main Data
 	Url         string `protobuf:"bytes,10,opt,name=url,proto3" json:"url,omitempty"`
-	Domain      string `protobuf:"bytes,11,opt,name=domain,proto3" json:"domain,omitempty"`
-	Title       string `protobuf:"bytes,12,opt,name=title,proto3" json:"title,omitempty"`
-	Description string `protobuf:"bytes,13,opt,name=description,proto3" json:"description,omitempty"`
+	Title       string `protobuf:"bytes,11,opt,name=title,proto3" json:"title,omitempty"`
+	Description string `protobuf:"bytes,12,opt,name=description,proto3" json:"description,omitempty"`
 	// Time data
 	FoundedAt    int64 `protobuf:"varint,20,opt,name=founded_at,json=foundedAt,proto3" json:"founded_at,omitempty"`
 	DiscoveredAt int64 `protobuf:"varint,21,opt,name=discovered_at,json=discoveredAt,proto3" json:"discovered_at,omitempty"`
@@ -788,9 +877,23 @@ func (x *Website) GetRev() string {
 	return ""
 }
 
-func (x *Website) GetRoles() []string {
+func (x *Website) GetOwner() string {
 	if x != nil {
-		return x.Roles
+		return x.Owner
+	}
+	return ""
+}
+
+func (x *Website) GetRead() []string {
+	if x != nil {
+		return x.Read
+	}
+	return nil
+}
+
+func (x *Website) GetWrite() []string {
+	if x != nil {
+		return x.Write
 	}
 	return nil
 }
@@ -798,13 +901,6 @@ func (x *Website) GetRoles() []string {
 func (x *Website) GetUrl() string {
 	if x != nil {
 		return x.Url
-	}
-	return ""
-}
-
-func (x *Website) GetDomain() string {
-	if x != nil {
-		return x.Domain
 	}
 	return ""
 }
@@ -992,14 +1088,16 @@ var File_model_v1_osint_proto protoreflect.FileDescriptor
 
 const file_model_v1_osint_proto_rawDesc = "" +
 	"\n" +
-	"\x14model/v1/osint.proto\x12\bmodel.v1\x1a\x1cgoogle/protobuf/struct.proto\x1a\x15model/v1/common.proto\"\xa3\x02\n" +
+	"\x14model/v1/osint.proto\x12\bmodel.v1\x1a\x1cgoogle/protobuf/struct.proto\x1a\x15model/v1/common.proto\"\xcd\x02\n" +
 	"\bRelation\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x12\n" +
 	"\x04from\x18\x03 \x01(\tR\x04from\x12\x0e\n" +
 	"\x02to\x18\x04 \x01(\tR\x02to\x12\x10\n" +
 	"\x03rev\x18\x05 \x01(\tR\x03rev\x12\x14\n" +
-	"\x05roles\x18\x06 \x03(\tR\x05roles\x12\x12\n" +
+	"\x05owner\x18\x06 \x01(\tR\x05owner\x12\x12\n" +
+	"\x04read\x18\a \x03(\tR\x04read\x12\x14\n" +
+	"\x05write\x18\b \x03(\tR\x05write\x12\x12\n" +
 	"\x04name\x18\n" +
 	" \x01(\tR\x04name\x12\x1e\n" +
 	"\n" +
@@ -1011,16 +1109,19 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	"updated_at\x18\x15 \x01(\x03R\tupdatedAt\x127\n" +
 	"\n" +
 	"attributes\x18\x1e \x01(\v2\x17.google.protobuf.StructR\n" +
-	"attributes\"\xca\x02\n" +
+	"attributes\"\x88\x03\n" +
 	"\x05Event\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
 	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x14\n" +
-	"\x05roles\x18\x04 \x03(\tR\x05roles\x122\n" +
-	"\blocation\x18\n" +
-	" \x01(\v2\x16.model.v1.LocationDataR\blocation\x12\x14\n" +
-	"\x05title\x18\v \x01(\tR\x05title\x12 \n" +
-	"\vdescription\x18\f \x01(\tR\vdescription\x12\x1f\n" +
+	"\x05owner\x18\x04 \x01(\tR\x05owner\x12\x12\n" +
+	"\x04read\x18\x05 \x03(\tR\x04read\x12\x14\n" +
+	"\x05write\x18\x06 \x03(\tR\x05write\x12\x12\n" +
+	"\x04type\x18\n" +
+	" \x01(\tR\x04type\x122\n" +
+	"\blocation\x18\v \x01(\v2\x16.model.v1.LocationDataR\blocation\x12\x14\n" +
+	"\x05title\x18\f \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\r \x01(\tR\vdescription\x12\x1f\n" +
 	"\vhappened_at\x18\x14 \x01(\x03R\n" +
 	"happenedAt\x12\x1d\n" +
 	"\n" +
@@ -1028,21 +1129,21 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	"\x04tags\x18\x1e \x03(\tR\x04tags\x127\n" +
 	"\n" +
 	"attributes\x18\x1f \x01(\v2\x17.google.protobuf.StructR\n" +
-	"attributes\"\xf6\x02\n" +
+	"attributes\"\x9b\x03\n" +
 	"\x06Source\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
 	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x14\n" +
-	"\x05roles\x18\x04 \x03(\tR\x05roles\x12\x12\n" +
-	"\x04name\x18\n" +
-	" \x01(\tR\x04name\x12\x10\n" +
-	"\x03url\x18\v \x01(\tR\x03url\x12\x19\n" +
-	"\broot_url\x18\f \x01(\tR\arootUrl\x12 \n" +
-	"\vreliability\x18\r \x01(\x05R\vreliability\x12\x1e\n" +
-	"\n" +
-	"monitoring\x18\x0e \x01(\x05R\n" +
-	"monitoring\x12\x14\n" +
-	"\x05title\x18\x0f \x01(\tR\x05title\x12\x1d\n" +
+	"\x05owner\x18\x04 \x01(\tR\x05owner\x12\x12\n" +
+	"\x04read\x18\x05 \x03(\tR\x04read\x12\x14\n" +
+	"\x05write\x18\x06 \x03(\tR\x05write\x12\x12\n" +
+	"\x04type\x18\n" +
+	" \x01(\tR\x04type\x12\x10\n" +
+	"\x03url\x18\v \x01(\tR\x03url\x12\x12\n" +
+	"\x04name\x18\f \x01(\tR\x04name\x12\x14\n" +
+	"\x05title\x18\r \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\x0e \x01(\tR\vdescription\x12 \n" +
+	"\vreliability\x18\x0f \x01(\x05R\vreliability\x12\x1d\n" +
 	"\n" +
 	"created_at\x18\x14 \x01(\x03R\tcreatedAt\x12\x1d\n" +
 	"\n" +
@@ -1050,15 +1151,17 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	"\x04tags\x18\x1e \x03(\tR\x04tags\x127\n" +
 	"\n" +
 	"attributes\x18\x1f \x01(\v2\x17.google.protobuf.StructR\n" +
-	"attributes\"\xc1\x02\n" +
+	"attributes\"\xeb\x02\n" +
 	"\x06Person\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
 	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x14\n" +
-	"\x05roles\x18\x04 \x03(\tR\x05roles\x12\x12\n" +
-	"\x04name\x18\n" +
-	" \x01(\tR\x04name\x12\x12\n" +
-	"\x04role\x18\v \x01(\tR\x04role\x12 \n" +
+	"\x05owner\x18\x04 \x01(\tR\x05owner\x12\x12\n" +
+	"\x04read\x18\x05 \x03(\tR\x04read\x12\x14\n" +
+	"\x05write\x18\x06 \x03(\tR\x05write\x12\x12\n" +
+	"\x04role\x18\n" +
+	" \x01(\tR\x04role\x12\x12\n" +
+	"\x04name\x18\v \x01(\tR\x04name\x12 \n" +
 	"\vnationality\x18\f \x01(\tR\vnationality\x12\x1d\n" +
 	"\n" +
 	"birth_date\x18\x14 \x01(\x03R\tbirthDate\x12\x1d\n" +
@@ -1068,15 +1171,17 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	"\aaliases\x18\x1f \x03(\tR\aaliases\x127\n" +
 	"\n" +
 	"attributes\x18  \x01(\v2\x17.google.protobuf.StructR\n" +
-	"attributes\"\xb4\x02\n" +
+	"attributes\"\xde\x02\n" +
 	"\fOrganization\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
 	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x14\n" +
-	"\x05roles\x18\x04 \x03(\tR\x05roles\x12\x12\n" +
-	"\x04name\x18\n" +
-	" \x01(\tR\x04name\x12\x12\n" +
-	"\x04type\x18\v \x01(\tR\x04type\x12\x1d\n" +
+	"\x05owner\x18\x04 \x01(\tR\x05owner\x12\x12\n" +
+	"\x04read\x18\x05 \x03(\tR\x04read\x12\x14\n" +
+	"\x05write\x18\x06 \x03(\tR\x05write\x12\x12\n" +
+	"\x04type\x18\n" +
+	" \x01(\tR\x04type\x12\x12\n" +
+	"\x04name\x18\v \x01(\tR\x04name\x12\x1d\n" +
 	"\n" +
 	"founded_at\x18\x14 \x01(\x03R\tfoundedAt\x12#\n" +
 	"\rdiscovered_at\x18\x15 \x01(\x03R\fdiscoveredAt\x12!\n" +
@@ -1084,17 +1189,18 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	"\x04tags\x18\x1e \x03(\tR\x04tags\x127\n" +
 	"\n" +
 	"attributes\x18\x1f \x01(\v2\x17.google.protobuf.StructR\n" +
-	"attributes\"\xe9\x02\n" +
+	"attributes\"\xfb\x02\n" +
 	"\aWebsite\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x10\n" +
 	"\x03rev\x18\x03 \x01(\tR\x03rev\x12\x14\n" +
-	"\x05roles\x18\x04 \x03(\tR\x05roles\x12\x10\n" +
+	"\x05owner\x18\x04 \x01(\tR\x05owner\x12\x12\n" +
+	"\x04read\x18\x05 \x03(\tR\x04read\x12\x14\n" +
+	"\x05write\x18\x06 \x03(\tR\x05write\x12\x10\n" +
 	"\x03url\x18\n" +
-	" \x01(\tR\x03url\x12\x16\n" +
-	"\x06domain\x18\v \x01(\tR\x06domain\x12\x14\n" +
-	"\x05title\x18\f \x01(\tR\x05title\x12 \n" +
-	"\vdescription\x18\r \x01(\tR\vdescription\x12\x1d\n" +
+	" \x01(\tR\x03url\x12\x14\n" +
+	"\x05title\x18\v \x01(\tR\x05title\x12 \n" +
+	"\vdescription\x18\f \x01(\tR\vdescription\x12\x1d\n" +
 	"\n" +
 	"founded_at\x18\x14 \x01(\x03R\tfoundedAt\x12#\n" +
 	"\rdiscovered_at\x18\x15 \x01(\x03R\fdiscoveredAt\x12!\n" +
