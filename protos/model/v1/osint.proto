@@ -19,7 +19,9 @@ message Relation {
   string to = 4;
   // @gotags: json:"_rev,omitempty"
   string rev = 5;
-  repeated string roles = 6;
+  string owner = 6;
+  repeated string read = 7;
+  repeated string write = 8;
   // Main Data
   string name = 10;
   int32 confidence = 11;
@@ -38,11 +40,14 @@ message Event {
   string key = 2;
   // @gotags: json:"_rev,omitempty"
   string rev = 3;
-  repeated string roles = 4;
+  string owner = 4;
+  repeated string read = 5;
+  repeated string write = 6;
   // Main Data
-  LocationData location = 10;
-  string title = 11;
-  string description = 12;
+  string type = 10;
+  LocationData location = 11;
+  string title = 12;
+  string description = 13;
   // Time data
   int64 happened_at = 20;
   int64 updated_at = 21;
@@ -59,14 +64,16 @@ message Source {
   string key = 2;
   // @gotags: json:"_rev,omitempty"
   string rev = 3;
-  repeated string roles = 4;
+  string owner = 4;
+  repeated string read = 5;
+  repeated string write = 6;
   // Main Data
-  string name = 10;
+  string type = 10;
   string url = 11;
-  string root_url = 12;
-  int32 reliability = 13;
-  int32 monitoring = 14;
-  string title = 15;
+  string name = 12;
+  string title = 13;
+  string description = 14;
+  int32 reliability = 15;
   // Time data
   int64 created_at = 20;
   int64 updated_at = 21;
@@ -83,10 +90,12 @@ message Person {
   string key = 2;
   // @gotags: json:"_rev,omitempty"
   string rev = 3;
-  repeated string roles = 4;
+  string owner = 4;
+  repeated string read = 5;
+  repeated string write = 6;
   // Main Data
-  string name = 10;
-  string role = 11;
+  string role = 10;
+  string name = 11;
   string nationality = 12;
   // Time data
   int64 birth_date = 20;
@@ -105,10 +114,12 @@ message Organization {
   string key = 2;
   // @gotags: json:"_rev,omitempty"
   string rev = 3;
-  repeated string roles = 4;
+  string owner = 4;
+  repeated string read = 5;
+  repeated string write = 6;
   // Main Data
-  string name = 10;
-  string type = 11;
+  string type = 10;
+  string name = 11;
   // Time data
   int64 founded_at = 20;
   int64 discovered_at = 21;
@@ -126,12 +137,13 @@ message Website {
   string key = 2;
   // @gotags: json:"_rev,omitempty"
   string rev = 3;
-  repeated string roles = 4;
+  string owner = 4;
+  repeated string read = 5;
+  repeated string write = 6;
   // Main Data
   string url = 10;
-  string domain = 11;
-  string title = 12;
-  string description = 13;
+  string title = 11;
+  string description = 12;
   // Time data
   int64 founded_at = 20;
   int64 discovered_at = 21;
