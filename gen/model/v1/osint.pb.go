@@ -41,6 +41,7 @@ type Relation struct {
 	// Main Data
 	Name       string `protobuf:"bytes,10,opt,name=name,proto3" json:"name,omitempty"`
 	Confidence int32  `protobuf:"varint,11,opt,name=confidence,proto3" json:"confidence,omitempty"`
+	Label      string `protobuf:"bytes,12,opt,name=label,proto3" json:"label,omitempty"`
 	// Time Data
 	CreatedAt int64 `protobuf:"varint,20,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	UpdatedAt int64 `protobuf:"varint,21,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
@@ -148,6 +149,13 @@ func (x *Relation) GetConfidence() int32 {
 		return x.Confidence
 	}
 	return 0
+}
+
+func (x *Relation) GetLabel() string {
+	if x != nil {
+		return x.Label
+	}
+	return ""
 }
 
 func (x *Relation) GetCreatedAt() int64 {
@@ -1088,7 +1096,7 @@ var File_model_v1_osint_proto protoreflect.FileDescriptor
 
 const file_model_v1_osint_proto_rawDesc = "" +
 	"\n" +
-	"\x14model/v1/osint.proto\x12\bmodel.v1\x1a\x1cgoogle/protobuf/struct.proto\x1a\x15model/v1/common.proto\"\xcd\x02\n" +
+	"\x14model/v1/osint.proto\x12\bmodel.v1\x1a\x1cgoogle/protobuf/struct.proto\x1a\x15model/v1/common.proto\"\xe3\x02\n" +
 	"\bRelation\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x10\n" +
 	"\x03key\x18\x02 \x01(\tR\x03key\x12\x12\n" +
@@ -1102,7 +1110,8 @@ const file_model_v1_osint_proto_rawDesc = "" +
 	" \x01(\tR\x04name\x12\x1e\n" +
 	"\n" +
 	"confidence\x18\v \x01(\x05R\n" +
-	"confidence\x12\x1d\n" +
+	"confidence\x12\x14\n" +
+	"\x05label\x18\f \x01(\tR\x05label\x12\x1d\n" +
 	"\n" +
 	"created_at\x18\x14 \x01(\x03R\tcreatedAt\x12\x1d\n" +
 	"\n" +

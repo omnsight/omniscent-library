@@ -25,6 +25,7 @@ message Relation {
   // Main Data
   string name = 10;
   int32 confidence = 11;
+  string label = 12;
   // Time Data
   int64 created_at = 20;
   int64 updated_at = 21;
